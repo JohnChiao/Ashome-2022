@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # Python cache
 __pycache__/
 *.pyc
+*.db
