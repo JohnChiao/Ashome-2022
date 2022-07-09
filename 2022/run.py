@@ -28,6 +28,7 @@ import web
 class User:
 	def __init__(self, name):
 		self.name = name
+		self.history = ""
 		User.activaty = self
 
 	def logout(self):

@@ -8,8 +8,12 @@ def devinfo():
     else:
         print('当前系统：Apple MacOS')
 
-def tree(obj = os.getcwd()):
-    return os.walk(obj,followlink = True)
+def dir(obj = os.getcwd()):
+    for curDir, dirs, files in os.walk(obj):
+        print("====================")
+        print("现在的目录：" + curDir)
+        print("该目录下包含的子目录：" + str(dirs))
+        print("该目录下包含的文件：" + str(files))
 
 def info(file):
     '''file:绝对路径'''
@@ -33,6 +37,7 @@ def reset():
     os.chdir(os.getcwd)
     print(os.getcwd()+'>')
 
+def ren(dirn):
 def ren(dirn):
     os.rename(dirn)
     print(os.getcwd()+'>')
