@@ -38,6 +38,5 @@ def reset():
     print(os.getcwd()+'>')
 
 def ren(dirn):
-def ren(dirn):
     os.rename(dirn)
     print(os.getcwd()+'>')
