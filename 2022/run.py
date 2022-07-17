@@ -16,7 +16,7 @@ import math
 import gc
 # Customize packages
 sys.path.append("./Applet")
-import calander
+import calander as cld
 import compute as calc
 import file
 import memorandum
@@ -52,10 +52,14 @@ MODULES = (
 	operator,
 	math,
 	gc,
-	calander,
+	cld,
 	calc,
 	file,
 	memorandum,
 	unicode,
+	vi,
 	web
 	)
+
+def modules():
+	print(MODULES)

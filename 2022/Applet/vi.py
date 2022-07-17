@@ -1,4 +1,5 @@
-﻿# 三个菜单：文件，编辑和关于
+﻿MODULE = "[vi]"
+# 三个菜单：文件，编辑和关于
 # 文件：新建、打开、保存和另存为
 # 编辑：撤销，重做，复制，剪切，粘贴，查找和全选
 # 关于：作者和版权
@@ -182,6 +183,7 @@ class Notepad(wx.Frame):
         win32ui.MessageBox("Author: John Chiao", "Author And Copyright")
 
 def main():
+    print(MODULE+"Launching...")
     app = wx.App()
     pad = Notepad(None)
     pad.Show(True)
