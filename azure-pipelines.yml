@@ -21,5 +21,8 @@ steps:
 
 - script: |
     cd ./2022
+    echo "PyPI Packages:"
     pip list
+    echo "Applets:"
+    dir ./Applet
   displayName: 'Test Ashome Requirment'
