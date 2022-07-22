@@ -26,11 +26,6 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    python -m pip install --upgrade pip
-    pip install wxPython310
-  displayName: 'Install dependencies'
-
-- script: |
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'Run pytest'
