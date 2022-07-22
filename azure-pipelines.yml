@@ -27,5 +27,5 @@ steps:
 
 - script: |
     cd ./2022
-    python run.py
-  displayName: 'Run Ashome'
+    pip list
+  displayName: 'Test Ashome'
