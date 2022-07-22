@@ -1,4 +1,4 @@
-#pogram_running
+MODULE = "unicode"
 def encode (text,rule = 'utf-8'):
     'encode'
     print(text.encode(rule))

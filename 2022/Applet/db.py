@@ -1,3 +1,5 @@
+MODULE = "db"
+
 import sqlite3
 
 class Database(object):

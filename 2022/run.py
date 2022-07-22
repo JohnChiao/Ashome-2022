@@ -18,6 +18,7 @@ import gc
 sys.path.append("./Applet")
 import calander as cld
 import compute as calc
+import db
 import file
 import memorandum
 import unicode
@@ -54,6 +55,7 @@ MODULES = (
 	gc,
 	cld,
 	calc,
+	db,
 	file,
 	memorandum,
 	unicode,

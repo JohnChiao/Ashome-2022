@@ -1,20 +1,20 @@
-MODULE = "[file]"
+MODULE = "file"
 import os
 
 
 def dinfo():
 	d = os.name
 	if d == 'nt':
-		print(MODULE+'当前系统：Microsoft Windows(AMD32)')
+		print("["+MODULE+"]"+'当前系统：Microsoft Windows(AMD32)')
 	else:
-		print(MODULE+'当前系统：Apple MacOS')
+		print("["+MODULE+"]"+'当前系统：Apple MacOS')
 
 def dir(obj = os.getcwd()):
 	for curDir, dirs, files in os.walk(obj):
-		print(MODULE+"====================")
-		print(MODULE+"现在的目录：" + curDir)
-		print(MODULE+"该目录下包含的子目录：" + str(dirs))
-		print(MODULE+"该目录下包含的文件：" + str(files))
+		print("["+MODULE+"]"+"====================")
+		print("["+MODULE+"]"+"现在的目录：" + curDir)
+		print("["+MODULE+"]"+"该目录下包含的子目录：" + str(dirs))
+		print("["+MODULE+"]"+"该目录下包含的文件：" + str(files))
 	return os.walk(obj)
 
 
@@ -42,32 +42,32 @@ def formatByte(number):
 
 def info(file):
 	fileinfo = os.stat(file) # 获取文件的基本信息
-	print(MODULE+"文件完整路径：", os.path.abspath(file))
-	print(MODULE+"索引号：",fileinfo.st_ino)
-	print(MODULE+"设备名：",fileinfo.st_dev)
-	print(MODULE+"文件大小：",formatByte(fileinfo.st_size))
-	print(MODULE+"最后一次访问时间：",formatTime(fileinfo.st_atime))
-	print(MODULE+"最后一次修改时间：",formatTime(fileinfo.st_mtime))
-	print(MODULE+"最后一次状态变化时间：",formatTime(fileinfo.st_ctime))
+	print("["+MODULE+"]"+"文件完整路径：", os.path.abspath(file))
+	print("["+MODULE+"]"+"索引号：",fileinfo.st_ino)
+	print("["+MODULE+"]"+"设备名：",fileinfo.st_dev)
+	print("["+MODULE+"]"+"文件大小：",formatByte(fileinfo.st_size))
+	print("["+MODULE+"]"+"最后一次访问时间：",formatTime(fileinfo.st_atime))
+	print("["+MODULE+"]"+"最后一次修改时间：",formatTime(fileinfo.st_mtime))
+	print("["+MODULE+"]"+"最后一次状态变化时间：",formatTime(fileinfo.st_ctime))
 
 
 
 def cd(file):
 	os.chdir(file)
-	print(MODULE+os.getcwd()+'>')
+	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def md(dirn):
 	os.makedirs(dirn)
-	print(MODULE+os.getcwd()+'>')
+	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def rd(dirn):
 	os.removedirs(dirn)
-	print(MODULE+os.getcwd()+'>')
+	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def reset():
 	os.chdir(os.getcwd)
-	print(MODULE+os.getcwd()+'>')
+	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def ren(dirn):
 	os.rename(dirn)
-	print(MODULE+os.getcwd()+'>')
+	print("["+MODULE+"]"+os.getcwd()+'>')
