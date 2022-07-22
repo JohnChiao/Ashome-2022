@@ -26,6 +26,5 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'Run pytest'
+    python run.py
+  displayName: 'Run Ashome'
