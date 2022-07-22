@@ -26,5 +26,6 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    python -m 2022/run.py
+    cd ./2022
+    python 2022/run.py
   displayName: 'Run Ashome'
