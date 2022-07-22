@@ -25,4 +25,6 @@ steps:
     pip list
     echo "Applets:"
     dir ./Applet
+    echo "Git Status:"
+    git status
   displayName: 'Test Ashome Requirment'
