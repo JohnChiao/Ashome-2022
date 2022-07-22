@@ -27,5 +27,5 @@ steps:
 
 - script: |
     cd ./2022
-    python 2022/run.py
+    python run.py
   displayName: 'Run Ashome'
