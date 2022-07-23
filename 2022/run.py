@@ -16,11 +16,13 @@ import math
 import gc
 # Customize packages
 sys.path.append("./Applet")
+sys.path.append("./Flask")
 import calander as cld
 import compute as calc
 import db
 import file
 import memorandum
+import server
 import unicode
 import vi
 import web
@@ -58,6 +60,7 @@ MODULES = (
 	db,
 	file,
 	memorandum,
+	server,
 	unicode,
 	vi,
 	web
