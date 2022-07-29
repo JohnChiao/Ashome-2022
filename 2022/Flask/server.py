@@ -8,16 +8,20 @@ def mainpage():
 	return flask.render_template("index.html")
 
 
-@app.route("/about")
+@app.route("/index.html")
+def mainpage():
+	return flask.render_template("index.html")
+
+
+@app.route("/about.html")
 def abpage():
 	return flask.render_template("about.html")
 
 
-@app.route("/gt")
+@app.route("/gt.html")
 def gitpage():
 	return flask.render_template("gt.html")
 
 
 def main():
-	input("Page:")
 	app.run()

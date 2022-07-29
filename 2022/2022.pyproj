@@ -3966,6 +3966,7 @@
     <Folder Include="Lib\xml\__pycache__\" />
     <Folder Include="Lib\zoneinfo\" />
     <Folder Include="Lib\zoneinfo\__pycache__\" />
+    <Folder Include="test\" />
     <Folder Include="Pack\" />
     <Folder Include="Scripts\" />
     <Folder Include="tcl\" />
@@ -4128,7 +4129,6 @@
     <Content Include="DLLs\_zoneinfo_d.pdb" />
     <Content Include="DLLs\_zoneinfo_d.pyd" />
     <Content Include="Doc\python3105.chm" />
-    <Content Include="Flask\.gitignore" />
     <Content Include="Flask\Lib\site-packages\click-8.1.3.dist-info\INSTALLER" />
     <Content Include="Flask\Lib\site-packages\click-8.1.3.dist-info\LICENSE.rst" />
     <Content Include="Flask\Lib\site-packages\click-8.1.3.dist-info\METADATA" />
@@ -4857,6 +4857,9 @@
     <Content Include="Flask\Scripts\wheel.exe" />
     <Content Include="Flask\Scripts\wheel3.10.exe" />
     <Content Include="Flask\Scripts\wheel3.exe" />
+    <Content Include="Flask\templates\about.html" />
+    <Content Include="Flask\templates\gt.html" />
+    <Content Include="Flask\templates\index.html" />
     <Content Include="include\abstract.h" />
     <Content Include="include\bltinmodule.h" />
     <Content Include="include\boolobject.h" />

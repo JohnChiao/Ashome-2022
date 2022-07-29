@@ -21,7 +21,6 @@ import calander as cld
 import compute as calc
 import db
 import file
-import memorandum
 import server
 import unicode
 import vi
@@ -59,7 +58,6 @@ MODULES = (
 	calc,
 	db,
 	file,
-	memorandum,
 	server,
 	unicode,
 	vi,
