@@ -9,7 +9,7 @@ def mainpage():
 
 
 @app.route("/index.html")
-def mainpage():
+def indexpage():
 	return flask.render_template("index.html")
 
 
