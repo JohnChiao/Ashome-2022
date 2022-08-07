@@ -52,8 +52,6 @@ def launch(module,code):
 		print("IOError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
 	except KeyError as err:
 		print("KeyError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-	finally:
-
 
 
 def shutdown():
