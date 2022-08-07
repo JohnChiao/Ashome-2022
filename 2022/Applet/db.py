@@ -10,3 +10,14 @@ class Database(object):
 	def run(self,code = ""):
 		self.cursor.execute(code)
 
+	def close(self):
+		self.cursor.close()
+		self.connect.close()
+
+	def commit(self):
+		self.connect.commit()
+
+	def relog(self):
+		self.connect.rollback()
+
+	
