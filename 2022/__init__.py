@@ -3,55 +3,46 @@ import platform
 import setup
 VERSION = "2022.10.5"
 code = ""
-cachefile = open("__pycache__/log.txt",mode='w')
-cachefile.close()
+ca = open("__pycache__/log.txt",mode='w')
+ca.close()
+del ca
 
 
 def main():
 	code = "Undefined"
-	cachefile = open("__pycache__/log.txt",mode='a+')
 	while code:
 		code = input(User.activaty.name+"@"+os.getcwd()+">")
 		try:
 			exec(User.activaty.history if code == "-h" else code)
 			User.activaty.history = User.activaty.history if code == "-h" else code
-			cachefile.write("Run:\r\n\tCode:\r\n\t\t",User.activaty.history,"\r\n")
+			User.activaty.cachefile.write("Run:\r\n\tCode:\r\n\t\t"+User.activaty.history+"\r\n")
+			User.activaty.cachefile.flush()
 		except KeyboardInterrupt:
 			shutdown()
 		except NameError as err:
 			print("NameError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			cachefile.write("NameError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
+			User.activaty.cachefile.write("NameError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			User.activaty.cachefile.flush()
 		except TypeError as err:
 			print("TypeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			cachefile.write("TypeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
+			User.activaty.cachefile.write("TypeError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			User.activaty.cachefile.flush()
 		except IOError as err:
 			print("IOError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			cachefile.write("IOError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
+			User.activaty.cachefile.write("IOError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			User.activaty.cachefile.flush()
 		except KeyError as err:
 			print("KeyError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			cachefile.write("KeyError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
+			User.activaty.cachefile.write("KeyError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			User.activaty.cachefile.flush()
 		except ValueError as err:
 			print("ValueError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			cachefile.write("ValueError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
+			User.activaty.cachefile.write("ValueError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			User.activaty.cachefile.flush()
 		except AttributeError as err:
 			print("AttributeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			cachefile.write("AttributeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-
-
-def launch(module,code):
-	try:
-		exec(module.MODULE+"."+code)
-		print("Run:\r\n\tCode:\r\n\t\t",code,"\r\n")
-	except KeyboardInterrupt:
-		shutdown()
-	except NameError as err:
-		print("NameError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-	except TypeError as err:
-		print("TypeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-	except IOError as err:
-		print("IOError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-	except KeyError as err:
-		print("KeyError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
+			User.activaty.cachefile.write("AttributeError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			User.activaty.cachefile.flush()
 
 
 def shutdown():

@@ -32,37 +32,14 @@ class User:
 		self.name = name
 		self.history = ""
 		User.activaty = self
+		self.cachefile = open("__pycache__/"+self.name+"_log.txt",mode='a+')
+		self.cachefile.write("============Startup============")
 
 	def logout(self):
 		User.activaty = None
 		return 0
 
-MODULES = (
-	zipfile,
-	wave,
-	turtle,
-	tkinter,
-	time,
-	threading,
-	sys,
-	string,
-	socket,
-	shutil,
-	re,
-	random,
-	os,
-	operator,
-	math,
-	gc,
-	cld,
-	calc,
-	db,
-	file,
-	server,
-	unicode,
-	vi,
-	web
-	)
+MODULES = (zipfile,wave,turtle,tkinter,time,threading,sys,string,socket,shutil,re,random,os,operator,math,gc,cld,calc,db,file,server,unicode,vi,web)
 
 def modules():
 	print(MODULES)
