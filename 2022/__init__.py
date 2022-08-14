@@ -15,38 +15,38 @@ def main():
 		try:
 			exec(User.activaty.history if code == "-h" else code)
 			User.activaty.history = User.activaty.history if code == "-h" else code
-			User.activaty.cachefile.write("Run:\r\n\tCode:\r\n\t\t"+User.activaty.history+"\r\n")
+			User.activaty.cachefile.write("Run:\n\tCode:\n\t\t"+User.activaty.history+"\n")
 			User.activaty.cachefile.flush()
 		except KeyboardInterrupt:
 			shutdown()
 		except NameError as err:
-			print("NameError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			User.activaty.cachefile.write("NameError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			print("NameError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			User.activaty.cachefile.write("NameError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 			User.activaty.cachefile.flush()
 		except TypeError as err:
-			print("TypeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			User.activaty.cachefile.write("TypeError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			print("TypeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			User.activaty.cachefile.write("TypeError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 			User.activaty.cachefile.flush()
 		except IOError as err:
-			print("IOError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			User.activaty.cachefile.write("IOError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			print("IOError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			User.activaty.cachefile.write("IOError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 			User.activaty.cachefile.flush()
 		except KeyError as err:
-			print("KeyError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			User.activaty.cachefile.write("KeyError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			print("KeyError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			User.activaty.cachefile.write("KeyError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 			User.activaty.cachefile.flush()
 		except ValueError as err:
-			print("ValueError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			User.activaty.cachefile.write("ValueError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			print("ValueError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			User.activaty.cachefile.write("ValueError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 			User.activaty.cachefile.flush()
 		except AttributeError as err:
-			print("AttributeError:\r\n\tCode:\r\n\t\t",code,"\r\n\tDatail:\r\n\t\t",err,"\r\n")
-			User.activaty.cachefile.write("AttributeError:\r\n\tCode:\r\n\t\t"+code+"\r\n\tDatail:\r\n\t\t"+err+"\r\n")
+			print("AttributeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			User.activaty.cachefile.write("AttributeError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 			User.activaty.cachefile.flush()
 
 
 def shutdown():
-	if input("\r\nExit Ashome?(y/n)").lower() == "y":
+	if input("\nExit Ashome?(y/n)").lower() == "y":
 		User.activaty.logout()
 		quit()
 	else:
