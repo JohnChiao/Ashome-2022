@@ -3,9 +3,9 @@ import platform
 import setup
 VERSION = "2022.10.6"
 code = ""
-ca = open("__pycache__/log.txt",mode='w')
-ca.close()
-del ca
+_ca = open("__pycache__/log.txt",mode='w')
+_ca.close()
+del _ca
 
 
 def main():
