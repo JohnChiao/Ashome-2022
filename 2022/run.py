@@ -21,6 +21,7 @@ import calander as cld
 import compute as calc
 import db
 import file
+import mail
 import server
 import unicode
 import vi
@@ -39,7 +40,7 @@ class User:
 		User.activaty = None
 		return 0
 
-MODULES = (zipfile,wave,turtle,tkinter,time,threading,sys,string,socket,shutil,re,random,os,operator,math,gc,cld,calc,db,file,server,unicode,vi,web)
+MODULES = (zipfile,wave,turtle,tkinter,time,threading,sys,string,socket,shutil,re,random,os,operator,mail,math,gc,cld,calc,db,file,server,unicode,vi,web)
 
 def modules():
 	print(MODULES)
