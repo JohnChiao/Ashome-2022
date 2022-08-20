@@ -20,11 +20,12 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    cd ./2022
-    echo "PyPI Packages:"
-    pip list
     echo "Applets:"
-    dir ./Applet
-    echo "Git Status:"
-    git status
+    dir ./2022/Applet
   displayName: 'Test Ashome Requirment'
+
+- script: |
+    echo "Backuping..."
+    git merge origin/master origin/backup
+    echo "CI Successful!"
+  displayName: 'Backup branch'
