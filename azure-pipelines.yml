@@ -23,10 +23,3 @@ steps:
     echo "Applets:"
     dir ./2022/Applet
   displayName: 'Test Ashome Requirment'
-
-- script: |
-    echo "Backuping..."
-    git config --global user.name "JohnChiao"
-    git config --global user.email "johnchiao@outlook.com"
-    git merge origin/master origin/backup
-  displayName: 'Backup branch'
