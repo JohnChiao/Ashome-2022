@@ -26,6 +26,8 @@ steps:
 
 - script: |
     echo "Backuping..."
+    git config --global user.name "JohnChiao"
+    git config --global user.email "johnchiao@outlook.com"
     git merge origin/master origin/backup
     echo "CI Successful!"
   displayName: 'Backup branch'
