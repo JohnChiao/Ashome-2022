@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
-    Python37:
+    CI:
       python.version: '3.7'
 
 steps:
@@ -29,5 +29,4 @@ steps:
     git config --global user.name "JohnChiao"
     git config --global user.email "johnchiao@outlook.com"
     git merge origin/master origin/backup
-    echo "CI Successful!"
   displayName: 'Backup branch'
