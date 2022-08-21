@@ -18,7 +18,12 @@ Ashome是我开发的Python开发工具包，永久开源，可二次开发，�
 
 ## Development - 开发
 
-Setup.py API: setup.build(文件名)：装载python程序；setup.install()：安装
+### How to update plugins - 如何发布扩展：
+
+1. Fork 本仓库
+2. 新增分支，名称规范为：Update_要发布的App名
+3. 向分支提交代码
+4. 新增Pull Request
 
 ## Support - 支持
 
