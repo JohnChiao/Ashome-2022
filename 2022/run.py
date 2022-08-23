@@ -38,8 +38,3 @@ class User:
 	def logout(self):
 		User.activaty = None
 		return 0
-
-MODULES = (zipfile,wave,turtle,tkinter,time,threading,sys,string,socket,shutil,re,random,os,operator,mail,math,gc,cld,calc,db,file,server,unicode,vi,web)
-
-def modules():
-	print(MODULES)

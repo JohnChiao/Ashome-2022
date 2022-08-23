@@ -1,5 +1,5 @@
-from run import *
 import platform
+from run import *
 import setup
 VERSION = "2022.10.5"
 code = ""
