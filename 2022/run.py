@@ -21,7 +21,6 @@ import calander as cld
 import compute as calc
 import db
 import file
-import mail
 import server
 import unicode
 import vi
