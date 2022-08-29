@@ -2,6 +2,7 @@ import platform
 from run import *
 import setup
 VERSION = "2022.10.5"
+COPYR = COPYRIGHT = LICENSE = "Copyright 2022 John Chiao"
 code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
