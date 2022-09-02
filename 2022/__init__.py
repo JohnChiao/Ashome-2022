@@ -14,6 +14,8 @@ def main():
 		code = input(User.activaty.name+"@"+os.getcwd()+">")
 		if code == "-q":
 			shutdown()
+        else if code == "..":
+		    os.chdir("..")
 		else:
 			try:
 				exec(User.activaty.history if code == "-h" else code)
