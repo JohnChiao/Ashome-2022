@@ -27,7 +27,6 @@
     <Compile Include="Applet\calander.py" />
     <Compile Include="Applet\compute.py" />
     <Compile Include="Applet\db.py" />
-    <Compile Include="Applet\mail.py" />
     <Compile Include="Applet\file.py" />
     <Compile Include="Applet\format.py" />
     <Compile Include="Applet\memorandum.py" />
