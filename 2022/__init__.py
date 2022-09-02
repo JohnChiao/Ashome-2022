@@ -1,7 +1,7 @@
 import platform
 from run import *
 import setup
-VERSION = "2022.10.5"
+VERSION = "2022.10.6"
 code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
