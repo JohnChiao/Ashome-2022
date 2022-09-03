@@ -1,6 +1,8 @@
 Ashome Readme
 
 [![Build Status](https://dev.azure.com/JohnChiao/Ashome/_apis/build/status/2022?branchName=master)](https://dev.azure.com/JohnChiao/Ashome/_build/latest?definitionId=6&branchName=master)
+[License](https://img.shields.io/badge/License-GPL-red)
+[QQ](https://img.shields.io/badge/QQ-109519279-blue)
 
 ## Introduction - 介绍
 
