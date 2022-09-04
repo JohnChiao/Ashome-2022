@@ -16,11 +16,12 @@ def main():
 			shutdown()
 		elif code == "..":
 			os.chdir("..")
-		elif code == "cd":
+		elif code == ".":
+			os.chdir(".")
+		elif code == "cd" or code == "/":
 			file.cd(input("<cd>"))
 		elif code == "-h":
-			with open("../README.md") as f:
-				print(f.read
+			help()
 		else:
 			try:
 				exec(User.activaty.history if code == "-h" else code)
