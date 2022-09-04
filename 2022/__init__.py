@@ -11,11 +11,16 @@ del _ca
 def main():
 	code = "Undefined"
 	while True:
-		code = input(User.activaty.name+"@"+os.getcwd()+">")
+		code = input(User.activaty.name+" @ "+os.getcwd()+">")
 		if code == "-q":
 			shutdown()
 		elif code == "..":
 			os.chdir("..")
+		elif code == "cd":
+			file.cd(input("<cd>"))
+		elif code == "-h":
+			with open("../README.md") as f:
+				print(f.read
 		else:
 			try:
 				exec(User.activaty.history if code == "-h" else code)
