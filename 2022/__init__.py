@@ -1,17 +1,23 @@
 import platform
 from run import *
+import os
+import sys
+import re
 import setup
 VERSION = "2022.10.5"
 code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
 del _ca
+__patt = {"nt": re.compile('C:/[Uu]sers'),
+          "posix": re.compile("/[Uu]sers")}
 
 
 def main():
 	code = "Undefined"
 	while True:
-		code = input(User.activaty.name+" @ "+os.getcwd()+">")
+		pwd = __patt[os.name].sub("~",os.getcwd())
+		code = input(User.activaty.name+" @ "+sys.platform+" : "+pwd+">")
 		if code == "-q":
 			shutdown()
 		elif code == "..":
