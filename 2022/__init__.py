@@ -9,28 +9,29 @@ code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
 del _ca
-__patt = {"nt": re.compile('C:/[Uu]sers'),
-          "posix": re.compile("/[Uu]sers")}
 
 
 def main():
 	code = "Undefined"
+	os.chdir(os.path.expanduser('~'))
 	while True:
-		pwd = __patt[os.name].sub("~",os.getcwd())
-		code = input(User.activaty.name+" @ "+sys.platform+" : "+pwd+">")
+		pwd = os.getcwd()
+		code = input(User.activaty.name+" @ "+platform.system()+" : "+pwd+">")
 		if code == "-q":
 			shutdown()
 		elif code == "..":
 			os.chdir("..")
 		elif code == ".":
 			os.chdir(".")
-		elif code == "cd" or code == "/":
+		elif code == "cd":
 			file.cd(input("<cd>"))
+		elif code == "~":
+			file.cd(os.path.expanduser('~'))
 		elif code == "-h":
 			help()
 		else:
 			try:
-				exec(User.activaty.history if code == "-h" else code)
+				exec("_ = "+User.activaty.history if code == "-h" else code)
 				User.activaty.history = User.activaty.history if code == "-h" else code
 				User.activaty.cachefile.write("Run:\n\tCode:\n\t\t"+User.activaty.history+"\n")
 				User.activaty.cachefile.flush()
