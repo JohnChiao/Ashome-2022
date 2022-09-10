@@ -53,8 +53,11 @@ def info(file):
 
 
 def cd(file):
-	os.chdir(file)
-	print("["+MODULE+"]"+os.getcwd()+'>')
+    try:
+	    os.chdir(file)
+	    print("["+MODULE+"]"+os.getcwd()+'>')
+    except:
+        pass
 
 def md(dirn):
 	os.makedirs(dirn)
