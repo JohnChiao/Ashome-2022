@@ -12,13 +12,14 @@ code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
 del _ca
+_prompt = {"nt" : " > ", "posix" : " $ "}
 
 
 def main():
 	code = "Undefined"
 	while True:
 		pwd = os.getcwd()
-		code = input(User.activaty.name+" @ "+platform.system()+" : "+pwd+">")
+		code = input(User.activaty.name+" @ "+platform.system()+" : "+pwd+_prompt[os.name])
 		if code == "-q":
 			shutdown()
 		elif code == "..":
