@@ -15,7 +15,7 @@ del _ca
 _prompt = {"nt" : " > ", "posix" : " $ "}
 
 
-def main():
+def main(debug = False):
 	code = "Undefined"
 
 	while True:
@@ -47,7 +47,7 @@ def main():
 
 		else:
 			try:
-				exec("print("+User.activaty.history+")" if code == "-h" else "print("+code+")")
+				exec(User.activaty.history if code == "-h" else code)
 				if User.activaty == None:
 					admin = User(easygui.enterbox("Input new username:","Logout"))
 					main()
@@ -55,91 +55,90 @@ def main():
 				User.activaty.cachefile.write("Run:\n\tCode:\n\t\t"+User.activaty.history+"\n")
 				User.activaty.cachefile.flush()
 				_ = User.activaty.history
-
 			except KeyboardInterrupt:
 				shutdown()
-
 			except NameError as err:
 				print("NameError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
-					while True:
-						code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
-						if code_d == "view":
-							exec("print({:s})".format(easygui.enterbox("view:","debug")))
-						elif code_d == "log":
-							User.activaty.cachefile.read()
-						elif code_d == "end":
-							break
+				if debug:
+					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
+						while True:
+							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
+							if code_d == "view":
+								exec("print({:s})".format(easygui.enterbox("view:","debug")))
+							elif code_d == "log":
+								User.activaty.cachefile.read()
+							elif code_d == "end":
+								break
 				User.activaty.cachefile.write("NameError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
-
 			except TypeError as err:
 				print("TypeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
-					while True:
-						code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
-						if code_d == "view":
-							exec("print({:s})".format(easygui.enterbox("view:","debug")))
-						elif code_d == "log":
-							User.activaty.cachefile.read()
-						elif code_d == "end":
-							break
+				if debug:
+					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
+						while True:
+							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
+							if code_d == "view":
+								exec("print({:s})".format(easygui.enterbox("view:","debug")))
+							elif code_d == "log":
+								User.activaty.cachefile.read()
+							elif code_d == "end":
+								break
 				User.activaty.cachefile.write("TypeError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
-
 			except IOError as err:
 				print("IOError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
-					while True:
-						code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
-						if code_d == "view":
-							exec("print({:s})".format(easygui.enterbox("view:","debug")))
-						elif code_d == "log":
-							User.activaty.cachefile.read()
-						elif code_d == "end":
-							break
+				if debug:
+					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
+						while True:
+							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
+							if code_d == "view":
+								exec("print({:s})".format(easygui.enterbox("view:","debug")))
+							elif code_d == "log":
+								User.activaty.cachefile.read()
+							elif code_d == "end":
+								break
 				User.activaty.cachefile.write("IOError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
-
 			except KeyError as err:
 				print("KeyError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
-					while True:
-						code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
-						if code_d == "view":
-							exec("print({:s})".format(easygui.enterbox("view:","debug")))
-						elif code_d == "log":
-							User.activaty.cachefile.read()
-						elif code_d == "end":
-							break
+				if debug:
+					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
+						while True:
+							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
+							if code_d == "view":
+								exec("print({:s})".format(easygui.enterbox("view:","debug")))
+							elif code_d == "log":
+								User.activaty.cachefile.read()
+							elif code_d == "end":
+								break
 				User.activaty.cachefile.write("KeyError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
-
 			except ValueError as err:
 				print("ValueError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
-					while True:
-						code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
-						if code_d == "view":
-							exec("print({:s})".format(easygui.enterbox("view:","debug")))
-						elif code_d == "log":
-							User.activaty.cachefile.read()
-						elif code_d == "end":
-							break
+				if debug:
+					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
+						while True:
+							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
+							if code_d == "view":
+								exec("print({:s})".format(easygui.enterbox("view:","debug")))
+							elif code_d == "log":
+								User.activaty.cachefile.read()
+							elif code_d == "end":
+								break
 				User.activaty.cachefile.write("ValueError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
-
 			except AttributeError as err:
 				print("AttributeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
-					while True:
-						code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
-						if code_d == "view":
-							exec("print({:s})".format(easygui.enterbox("view:","debug")))
-						elif code_d == "log":
-							User.activaty.cachefile.read()
-						elif code_d == "end":
-							break
+				if debug:
+					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
+						while True:
+							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
+							if code_d == "view":
+								exec("print({:s})".format(easygui.enterbox("view:","debug")))
+							elif code_d == "log":
+								User.activaty.cachefile.read()
+							elif code_d == "end":
+								break
 				User.activaty.cachefile.write("AttributeError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
 
