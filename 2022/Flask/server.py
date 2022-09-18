@@ -2,26 +2,20 @@ import flask
 
 app = flask.Flask(__name__)
 
+"""
+    A Flask server
+    New HTML templates in <./templates>
+    New static file in <./statics>
+"""
+
 
 @app.route("/")
 def mainpage():
 	return flask.render_template("index.html")
 
 
-@app.route("/index.html")
-def indexpage():
-	return flask.render_template("index.html")
-
-
-@app.route("/about.html")
-def abpage():
-	return flask.render_template("about.html")
-
-
-@app.route("/gt.html")
-def gitpage():
-	return flask.render_template("gt.html")
-
-
 def main():
-	app.run()
+    try:
+	    app.run()
+    except as err:
+        print("Error:",err)
