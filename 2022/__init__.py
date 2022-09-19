@@ -1,6 +1,6 @@
-from email.mime import image
 import platform
 from run import *
+from pyop import *
 import os
 import sys
 import re
@@ -51,10 +51,10 @@ def main(debug = False):
 				if User.activaty == None:
 					admin = User(easygui.enterbox("Input new username:","Logout"))
 					main()
-				User.activaty.history = User.activaty.history if code == "-h" else code
+				User.activaty.history = _ = User.activaty.history if code == "-h" else code
 				User.activaty.cachefile.write("Run:\n\tCode:\n\t\t"+User.activaty.history+"\n")
 				User.activaty.cachefile.flush()
-				_ = User.activaty.history
+				print(_)
 			except KeyboardInterrupt:
 				shutdown()
 			except NameError as err:

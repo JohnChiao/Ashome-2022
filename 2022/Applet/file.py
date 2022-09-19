@@ -74,3 +74,7 @@ def reset():
 def ren(dirn):
 	os.rename(dirn)
 	print("["+MODULE+"]"+os.getcwd()+'>')
+
+def op(name):
+    return os.startfile(name)
+    
