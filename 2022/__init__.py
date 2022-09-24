@@ -18,6 +18,7 @@ _prompt = {"nt" : " > ", "posix" : " $ "}
 def main(debug = False):
 	code = "Undefined"
 
+
 	while True:
 		pwd = os.getcwd()
 		code = input(User.activaty.name+" @ "+platform.system()+" : "+pwd+_prompt[os.name])

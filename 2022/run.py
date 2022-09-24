@@ -15,6 +15,7 @@ import operator
 import math
 import gc
 # Customize packages
+os.chdir("./2022")
 sys.path.append("./Applet")
 sys.path.append("./Flask")
 import calander as cld
