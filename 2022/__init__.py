@@ -1,3 +1,4 @@
+from distutils.log import debug
 import platform
 from run import *
 from pyop import *
@@ -7,21 +8,26 @@ import re
 import setup
 import getpass
 import easygui
+# Global Define Start
 VERSION = "2022.10.5"
 code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
 del _ca
 _prompt = {"nt" : " > ", "posix" : " $ "}
+cter = False
+# Global Defile Stop
+# Login
+username = getpass.getuser()
+admin = User(name = username if username else "Admin")
 
 
-def main(debug = False):
+def main(ctr = cter):
 	code = "Undefined"
-
 
 	while True:
 		pwd = os.getcwd()
-		code = input(User.activaty.name+" @ "+platform.system()+" : "+pwd+_prompt[os.name])
+		code = input((User.activaty.name+" @ "+platform.system()+" : " if ctr == False else "")+pwd+_prompt[os.name])
 		if code == "-q":
 			shutdown()
 
@@ -46,21 +52,24 @@ def main(debug = False):
 		elif "-i" in code:
 			exec("import "+code[3:])
 
+		elif code == "-o":
+			optlist = option()
+			cter = optlist[0]
+			User.activaty.d = optlist[1]
+
 		else:
 			try:
 				exec(User.activaty.history if code == "-h" else code)
 				if User.activaty == None:
 					admin = User(easygui.enterbox("Input new username:","Logout"))
 					main()
-				User.activaty.history = _ = User.activaty.history if code == "-h" else code
 				User.activaty.cachefile.write("Run:\n\tCode:\n\t\t"+User.activaty.history+"\n")
 				User.activaty.cachefile.flush()
-				print(_)
 			except KeyboardInterrupt:
 				shutdown()
 			except NameError as err:
 				print("NameError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if debug:
+				if User.activaty.d:
 					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
 						while True:
 							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
@@ -74,7 +83,7 @@ def main(debug = False):
 				User.activaty.cachefile.flush()
 			except TypeError as err:
 				print("TypeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if debug:
+				if User.activaty.d:
 					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
 						while True:
 							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
@@ -88,7 +97,7 @@ def main(debug = False):
 				User.activaty.cachefile.flush()
 			except IOError as err:
 				print("IOError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if debug:
+				if User.activaty.d:
 					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
 						while True:
 							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
@@ -102,7 +111,7 @@ def main(debug = False):
 				User.activaty.cachefile.flush()
 			except KeyError as err:
 				print("KeyError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if debug:
+				if User.activaty.d:
 					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
 						while True:
 							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
@@ -116,7 +125,7 @@ def main(debug = False):
 				User.activaty.cachefile.flush()
 			except ValueError as err:
 				print("ValueError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if debug:
+				if User.activaty.d:
 					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
 						while True:
 							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
@@ -130,7 +139,7 @@ def main(debug = False):
 				User.activaty.cachefile.flush()
 			except AttributeError as err:
 				print("AttributeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
-				if debug:
+				if User.activaty.d:
 					if easygui.boolbox("If something went wrong, press <Debug> to debug","Oops!",("[D]ebug","[I]gnore")):
 						while True:
 							code_d = easygui.choicebox("If something went wrong","debug",("view","log","end"))
@@ -142,6 +151,7 @@ def main(debug = False):
 								break
 				User.activaty.cachefile.write("AttributeError:\n\tCode:\n\t\t"+code+"\n\tDatail:\n\t\t"+str(err)+"\n")
 				User.activaty.cachefile.flush()
+				User.activaty.d = debug
 
 
 def shutdown():
@@ -152,9 +162,24 @@ def shutdown():
 		main()
 
 
+def option(debug=User.activaty.d):
+	ctr = cter
+	while True:
+		opt = easygui.choicebox("Options: ","option",["Debug","CleanTerminal","QuitOption"])
+		if opt == None:
+			break
+		if "Debug" in opt:
+			debug = False if debug else True
+		if "CleanTerminal" in opt:
+			ctr = False if ctr else True
+		if "QuitOption" in opt:
+			break
+	return [ctr,debug]
+		
+		
+
+
 if __name__ == "__main__":
-	username = getpass.getuser()
-	admin = User(name = username if username else "Admin")
 	print("Ashome V"+VERSION)
 	print("Environment Version:",platform.python_version())
 	main()

@@ -1,15 +1,16 @@
 MODULE = "file"
 import os
+import fileutils as utils
 
 
 def dinfo():
 	d = os.name
 	if d == 'nt':
-		print("["+MODULE+"]"+'当前系统：Microsoft Windows(AMD32)')
+		print("["+MODULE+"]"+'当前系统:Microsoft Windows')
 	else:
-		print("["+MODULE+"]"+'当前系统：Apple MacOS')
+		print("["+MODULE+"]"+'当前系统:Linux')
 
-def dir(obj = os.getcwd()):
+def ls(obj = os.getcwd()):
 	for curDir, dirs, files in os.walk(obj):
 		print("["+MODULE+"]"+"====================")
 		print("["+MODULE+"]"+"现在的目录：" + curDir)
@@ -20,7 +21,7 @@ def dir(obj = os.getcwd()):
 
 def formatTime(longtime):
 	'''格式化日期时间的函数
-	   longtime：要格式化的时间
+	   longtime:要格式化的时间
 	'''
 	import time  # 导入时间模块
 	return time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(longtime))
@@ -28,7 +29,7 @@ def formatTime(longtime):
 
 def formatByte(number):
 	'''格式化大小的函数
-	   number：要格式化的字节数
+	   number:要格式化的字节数
 	'''    
 	for (scale,label) in [(1024*1024*1024,"GB"),(1024*1024,"MB"),(1024,"KB")]:
 		if number>= scale:   # 如果文件大小大于等于1KB
