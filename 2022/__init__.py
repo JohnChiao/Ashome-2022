@@ -184,7 +184,7 @@ def option():
 		else:
 			break
 	return optl if optl else [cter,User.activaty.d]
-		
+
 def start(username):
 	if easygui.ccbox("Welcome "+username+"!","Start",["[C]ontinue","[Q]uit"]):
 		main()
