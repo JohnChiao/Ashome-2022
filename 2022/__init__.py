@@ -9,7 +9,7 @@ import setup
 import getpass
 import easygui
 # Global Define Start
-VERSION = "2022.10.5"
+VERSION = "2022.11"
 code = ""
 _ca = open("__pycache__/log.txt",mode='w')
 _ca.close()
@@ -22,12 +22,14 @@ username = getpass.getuser()
 admin = User(name = username if username else "Admin")
 
 
-def main(ctr = cter):
+def main():
 	code = "Undefined"
-
+	global cter
 	while True:
 		pwd = os.getcwd()
-		code = input((User.activaty.name+" @ "+platform.system()+" : " if ctr == False else "")+pwd+_prompt[os.name])
+		prompt_info = User.activaty.name+" @ "+platform.system()+" : "
+		prompt_info = "" if cter else prompt_info
+		code = input(prompt_info+pwd+_prompt[os.name])
 		if code == "-q":
 			shutdown()
 
@@ -56,6 +58,9 @@ def main(ctr = cter):
 			optlist = option()
 			cter = optlist[0]
 			User.activaty.d = optlist[1]
+
+		elif code == "-l":
+			return start(User.activaty.name)
 
 		else:
 			try:
@@ -162,24 +167,32 @@ def shutdown():
 		main()
 
 
-def option(debug=User.activaty.d):
+def option():
 	ctr = cter
+	optl = None
+	debug=User.activaty.d
 	while True:
-		opt = easygui.choicebox("Options: ","option",["Debug","CleanTerminal","QuitOption"])
+		opt = easygui.choicebox("Options: ","option",["Debug Mode: "+str(debug),"Clean Terminal: "+str(ctr),"Apply Setting","Quit Option"])
 		if opt == None:
 			break
-		if "Debug" in opt:
+		elif "Debug" in opt:
 			debug = False if debug else True
-		if "CleanTerminal" in opt:
+		elif "Clean" in opt:
 			ctr = False if ctr else True
-		if "QuitOption" in opt:
+		elif "Apply" in opt:
+			optl = [ctr,debug]
+		else:
 			break
-	return [ctr,debug]
+	return optl if optl else [cter,User.activaty.d]
 		
-		
+def start(username):
+	if easygui.ccbox("Welcome "+username+"!","Start",["[C]ontinue","[Q]uit"]):
+		main()
+	else:
+		quit()
 
 
 if __name__ == "__main__":
 	print("Ashome V"+VERSION)
 	print("Environment Version:",platform.python_version())
-	main()
+	start(User.activaty.name)
