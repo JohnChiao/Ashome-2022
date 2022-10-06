@@ -55,7 +55,7 @@ def run():
 	elif choice == '4':
 		print("["+MODULE+"]"+str(num1),"/",str(num2),"=", divide(num1,num2))
 
-	elif choice == '4':
+	elif choice == '5':
 		print("["+MODULE+"]"+str(num1),"^",str(num2),"=", pow(num1,num2))
 
 	else:

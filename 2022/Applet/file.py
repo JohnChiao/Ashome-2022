@@ -6,7 +6,7 @@ import fileutils as utils
 def dinfo():
 	d = os.name
 	if d == 'nt':
-		print("["+MODULE+"]"+'当前系统:Microsoft Windows')
+		print("["+MODULE+"]"+'当前系统:Windows')
 	else:
 		print("["+MODULE+"]"+'当前系统:Linux')
 
