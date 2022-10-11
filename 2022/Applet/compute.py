@@ -44,19 +44,19 @@ def run():
 	num2 = int(input("["+MODULE+"]"+"输入第二个数字: "))
  
 	if choice == '1':
-		print("["+MODULE+"]"+num1,"+",num2,"=", add(num1,num2))
+		print("["+MODULE+"]"+str(num1),"+",str(num2),"=", add(num1,num2))
  
 	elif choice == '2':
-		print("["+MODULE+"]"+num1,"-",num2,"=", subtract(num1,num2))
+		print("["+MODULE+"]"+str(num1),"-",str(num2),"=", subtract(num1,num2))
  
 	elif choice == '3':
-		print("["+MODULE+"]"+num1,"*",num2,"=", multiply(num1,num2))
+		print("["+MODULE+"]"+str(num1),"*",str(num2),"=", multiply(num1,num2))
  
 	elif choice == '4':
-		print("["+MODULE+"]"+num1,"/",num2,"=", divide(num1,num2))
+		print("["+MODULE+"]"+str(num1),"/",str(num2),"=", divide(num1,num2))
 
-	elif choice == '4':
-		print("["+MODULE+"]"+num1,"^",num2,"=", pow(num1,num2))
+	elif choice == '5':
+		print("["+MODULE+"]"+str(num1),"^",str(num2),"=", pow(num1,num2))
 
 	else:
 		print("["+MODULE+"]"+"非法输入")

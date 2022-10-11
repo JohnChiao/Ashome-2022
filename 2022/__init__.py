@@ -66,7 +66,7 @@ def main():
 			try:
 				exec(User.activaty.history if code == "-h" else code)
 				if User.activaty == None:
-					admin = User(easygui.enterbox("Input new username:","Logout"))
+					admin = User(easygui.enterbox("Input new username:","Login"))
 					main()
 				User.activaty.cachefile.write("Run:\n\tCode:\n\t\t"+User.activaty.history+"\n")
 				User.activaty.cachefile.flush()
