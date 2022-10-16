@@ -22,12 +22,8 @@ steps:
 - script: |
     echo "Applets:"
     dir ./2022/Applet
-    echo "PyPI:"
-    ./2022/python.exe -m pip list
   displayName: 'Test Ashome Requirment'
-
-- script: |
-    ./2022/python.exe -m pip install --upgrade easygui
-    ./2022/python.exe -m pip install --upgrade wxpython
-    ./2022/python.exe -m pip install --upgrade requests
-  displayName: 'Update PyPI Package'
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'filePath'
+    scriptPath: 'run.py'
