@@ -23,7 +23,3 @@ steps:
     echo "Applets:"
     dir ./2022/Applet
   displayName: 'Test Ashome Requirment'
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'filePath'
-    scriptPath: 'run.py'
