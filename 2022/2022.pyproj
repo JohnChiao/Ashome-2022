@@ -4604,13 +4604,10 @@
     <Content Include="python3.dll" />
     <Content Include="python310.dll" />
     <Content Include="python310_d.dll" />
-    <Content Include="python310_d.pdb" />
     <Content Include="python3_d.dll" />
     <Content Include="pythonw.exe" />
     <Content Include="pythonw_d.exe" />
-    <Content Include="pythonw_d.pdb" />
     <Content Include="python_d.exe" />
-    <Content Include="python_d.pdb" />
     <Content Include="Scripts\black.exe" />
     <Content Include="Scripts\blackd.exe" />
     <Content Include="Scripts\cmark.exe" />
