@@ -1,0 +1,4 @@
+easygui
+flask
+wxpython
+requests
