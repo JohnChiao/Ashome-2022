@@ -23,7 +23,6 @@ import db
 import file
 import unicode
 import vi
-import web
 
 
 class User:

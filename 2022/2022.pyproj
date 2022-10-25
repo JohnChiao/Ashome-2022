@@ -34,7 +34,7 @@
     <Compile Include="Applet\pyop.py" />
     <Compile Include="Applet\unicode.py" />
     <Compile Include="Applet\updater.py" />
-    <Compile Include="Applet\web.py" />
+    <Compile Include="Applet\weblib.py" />
     <Compile Include="env\Lib\site-packages\certifi\core.py" />
     <Compile Include="env\Lib\site-packages\certifi\__init__.py" />
     <Compile Include="env\Lib\site-packages\certifi\__main__.py" />
@@ -4967,7 +4967,7 @@
     <Content Include="env\Scripts\wxdemo.exe" />
     <Content Include="env\Scripts\wxdocs.exe" />
     <Content Include="env\Scripts\wxget.exe" />
-    <Content Include="requirments.txt" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

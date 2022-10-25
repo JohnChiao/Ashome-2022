@@ -3,13 +3,6 @@ import os
 import fileutils as utils
 
 
-def dinfo():
-	d = os.name
-	if d == 'nt':
-		print("["+MODULE+"]"+'当前系统:Windows')
-	else:
-		print("["+MODULE+"]"+'当前系统:Linux')
-
 def ls(obj = os.getcwd()):
 	for curDir, dirs, files in os.walk(obj):
 		print("["+MODULE+"]"+"====================")
@@ -35,10 +28,10 @@ def formatByte(number):
 		if number>= scale:   # 如果文件大小大于等于1KB
 			return "%.2f %s" %(number*1.0/scale,label)
 		elif number == 1: # 如果文件大小为1字节
-			return "1 字节"
+			return "1 Byte"
 		else:   # 处理小于1KB的情况
 			byte = "%.2f" % (number or 0) 
-	return (byte[:-3] if byte.endswith('.00') else byte)+" 字节"  # 去掉结尾的.00，并且加上单位“字节”
+	return (byte[:-3] if byte.endswith('.00') else byte)+" Byte"  # 去掉结尾的.00，并且加上单位“字节”
 
 
 def info(file):
@@ -56,25 +49,20 @@ def info(file):
 def cd(file):
 	try:
 		os.chdir(file)
-		print("["+MODULE+"]"+os.getcwd()+'>')
 	except:
 		pass
 
 def md(dirn):
 	os.makedirs(dirn)
-	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def rd(dirn):
 	os.removedirs(dirn)
-	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def reset():
 	os.chdir(os.getcwd)
-	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def ren(dirn):
 	os.rename(dirn)
-	print("["+MODULE+"]"+os.getcwd()+'>')
 
 def op(name):
 	return os.startfile(name)

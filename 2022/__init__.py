@@ -16,10 +16,11 @@ _ca.close()
 del _ca
 _prompt = {"nt" : " > ", "posix" : " $ "}
 cter = False
-# Global Defile Stop
-# Login
 username = getpass.getuser()
-admin = User(name = username if username else "Admin")
+ulist = ["SYSTEM",username]
+# Global Define Stop
+# Login
+
 
 
 def main():
@@ -185,9 +186,12 @@ def option():
 			break
 	return optl if optl else [cter,User.activaty.d]
 
-def start(username):
-	if easygui.ccbox("Welcome "+username+"!","Start",["[C]ontinue","[Q]uit"]):
-		main()
+def start(userlist):
+	if easygui.ccbox("Welcome!","Start",["[L]ogin or Sign up","[Q]uit"]):
+		ulogin = easygui.choicebox("Login","Login",userlist)
+		if ulogin:
+			User(name = ulogin)
+			main()
 	else:
 		quit()
 
@@ -195,4 +199,4 @@ def start(username):
 if __name__ == "__main__":
 	print("Ashome V"+VERSION)
 	print("Environment Version:",platform.python_version())
-	start(User.activaty.name)
+	start(ulist)
