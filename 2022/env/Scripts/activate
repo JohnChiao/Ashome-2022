@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\编程\Ashome\2022\env"
+VIRTUAL_ENV="E:\编程\Ashome\2022\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

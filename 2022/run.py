@@ -22,7 +22,7 @@ import compute as calc
 import db
 import file
 import unicode
-import vi
+#import vi
 
 
 class User:

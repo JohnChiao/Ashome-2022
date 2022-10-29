@@ -58,6 +58,7 @@ def main():
 				if User.activaty == None:
 					admin = User(easygui.enterbox("Input new username:","Login"))
 					main()
+
 			except KeyboardInterrupt:
 				shutdown()
 
@@ -72,6 +73,7 @@ def main():
 				
 			except KeyError as err:
 				print("KeyError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+
 			except ValueError as err:
 				print("ValueError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
 
