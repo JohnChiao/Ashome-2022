@@ -32,7 +32,6 @@ class User:
 		User.activaty = self
 		self.cachefile = open("__pycache__/"+self.name+"_log.txt",mode='a+')
 		self.cachefile.write("============Startup============")
-		self.d = False
 
 	def logout(self):
 		User.activaty = None
