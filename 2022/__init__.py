@@ -9,12 +9,12 @@ import setup
 import getpass
 import easygui
 # Global Define Start
-VERSION = "2022.11.4"
+VERSION = "2022.11.5"
 code = ""
 _prompt = {"nt" : " > ", "posix" : " $ "}
 cter = False
 username = getpass.getuser()
-ulist = ["SYSTEM",username]
+ulist = [username]
 # Global Define Stop
 # Login
 
