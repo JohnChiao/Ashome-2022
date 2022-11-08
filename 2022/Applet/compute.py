@@ -29,7 +29,7 @@ def pow(x, y):
 
 	return x ** y
 
-def run():
+def calc():
 	# 用户输入
 	print("["+MODULE+"]"+"选择运算：")
 	print("["+MODULE+"]"+"1、相加")

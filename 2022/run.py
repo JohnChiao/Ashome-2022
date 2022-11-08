@@ -17,11 +17,12 @@ import gc
 # Customize packages
 sys.path.append("./Applet")
 sys.path.append("./Flask")
-import calander as cld
-import compute as calc
-import db
-import file
-import unicode
+from calander import *
+from compute import *
+from db import *
+from file import *
+from unicode import *
+from vi import *
 
 
 class User:

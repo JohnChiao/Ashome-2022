@@ -25,7 +25,7 @@ def main():
 	global cter
 	while True:
 		pwd = os.getcwd()
-		prompt_info = User.activaty.name+" @ "+platform.system()+" : "
+		prompt_info = User.activaty.name+" @ "+platform.system()+" - \n\r"
 		prompt_info = "" if cter else prompt_info
 		code = input(prompt_info+pwd+_prompt[os.name])
 		if code == "-q":
@@ -108,6 +108,5 @@ def start():
 
 
 if __name__ == "__main__":
-	print("Ashome V"+VERSION)
-	print("Environment Version:",platform.python_version())
+	print("Python",platform.python_version(),"shell")
 	start()
