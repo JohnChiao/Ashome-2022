@@ -2,123 +2,130 @@ from tkinter import *  # ¿Ø¼þ»ù´¡°ü£¬µ¼ÈëÕâ¸ö°üºó£¬Õâ¸ö°üÏÂµÄËùÓÐº¯Êý¿ÉÒÔÖ±½Óµ÷Ó
 from tkinter import filedialog, messagebox
 from tkinter.ttk import Combobox
 from urllib.parse import quote
+import easygui
 
 class MainWindow():
-    # ³õÊ¼»¯
-    def __init__(self):
-        top_button_width = 10 #ÓÃÓÚÉèÖÃ°´Å¥¿í¶È
-        button_relief = RAISED #ÓÃÓÚÉèÖÃÍ¼±êÐ§¹û£¬ÕâÀïÉèÎªÍ¹Æð
+	# ³õÊ¼»¯
+	def __init__(self):
+		top_button_width = 10 #ÓÃÓÚÉèÖÃ°´Å¥¿í¶È
+		button_relief = RAISED #ÓÃÓÚÉèÖÃÍ¼±êÐ§¹û£¬ÕâÀïÉèÎªÍ¹Æð
 
-        # ´´½¨¶¥²ã´°¿Ú
-        root = Tk()
-        self.src_filename = None
-        self.count = StringVar()
-        self.count.set('0')
-        root.title('Notebook')
-        # ¿í¡¢¸ßÉèÎª²»¿É±ä,Ä¬ÈÏÎªTrue
-        root.resizable(width=False, height=False)
+		# ´´½¨¶¥²ã´°¿Ú
+		root = Tk()
+		self.src_filename = None
+		self.count = StringVar()
+		self.count.set('0')
+		root.title('Notebook')
+		# ¿í¡¢¸ßÉèÎª²»¿É±ä,Ä¬ÈÏÎªTrue
+		root.resizable(width=False, height=False)
 
-        # ÉÏ²¿¿Ø¼þ
-        Button(root, text='Open file', relief=button_relief, width=top_button_width, command=self.open_button_event).grid(row=0, column=0)
-        Button(root, text='New text file', relief=button_relief, width=top_button_width, command=self.new_button_event).grid(row=0, column=1)
-        Button(root, text='Save', relief=button_relief, width=top_button_width,
-               command=self.save_button_event).grid(row=0, column=3)
-        Button(root, text='Save as...', relief=button_relief, width=top_button_width,
-               command=self.other_save_button_event).grid(row=0, column=4)
-        Button(root, text='clear this file', width=top_button_width, command=self.clear_button).grid(row=0, column=5)
+		# ÉÏ²¿¿Ø¼þ
+		Button(root, text='Open file', relief=button_relief, width=top_button_width, command=self.open_button_event).grid(row=0, column=0)
+		Button(root, text='New text file', relief=button_relief, width=top_button_width, command=self.new_button_event).grid(row=0, column=1)
+		Button(root, text='Save', relief=button_relief, width=top_button_width,
+			   command=self.save_button_event).grid(row=0, column=3)
+		Button(root, text='Save as...', relief=button_relief, width=top_button_width,
+			   command=self.other_save_button_event).grid(row=0, column=4)
+		Button(root, text='Clear this file', width=top_button_width, command=self.clear_button).grid(row=0, column=5)
 
-        # ¿ÕÒ»ÐÐ
-        Label(root, text='').grid(row=1)
+		# ¿ÕÒ»ÐÐ
+		Label(root, text='').grid(row=1)
 
-        # ×ó²à¿Ø¼þ
-        Button(root, text='Find', relief=button_relief, width=top_button_width, command=self.find_button_event) \
-            .grid(row=2, column=0, sticky=N)
-        self.find_text = Text(root, width=top_button_width, height=2)
-        self.find_text.grid(row=2, column=1)
-        Label(root, text='Count:').grid(row=3, column=0, sticky=N)
-        self.count_label = Label(root, textvariable=self.count)
-        self.count_label.grid(row=3, column=1)
-        Button(root, text='Replace:', relief=button_relief, width=top_button_width, command=self.replace_button_event).grid(
-            row=4, column=0, sticky=N)
-        self.replace_text = Text(root, width=top_button_width, height=2)
-        self.replace_text.grid(row=4, column=1, sticky=N)
-        Button(root, text='Uppercase', relief=button_relief, width=top_button_width, command=self.upper_button_event).grid(
-            row=5, column=0, sticky=N)
-        Button(root, text='Lowercase', relief=button_relief, width=top_button_width, command=self.lower_button_event).grid(
-            row=5, column=1, sticky=N)
-        #ÓÒ²àÎÄ±¾¿ò
-        self.text = Text(root)
-        self.text.grid(row=2, column=2, columnspan=6, rowspan=15)
-    #´ò¿ª
-    def open_button_event(self):
-        self.new_button_event()
-        # »ñÈ¡ÎÄ¼þÃû
-        self.src_filename = filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
-        if self.src_filename:
-            # »ñÈ¡Êý¾Ý
-            data = open(self.src_filename).read()
-            # Ìî³äµ½text¿Ø¼þ
-            #self.text.delete(1.0, END)
-            self.text.insert(INSERT, data)
-    #ÐÂ½¨
-    def new_button_event(self):
-        data = self.__get()
-        if data and messagebox.askokcancel('Notebook', 'Save this file?'):
-            if self.src_filename:
-                self.__sava_data(self.src_filename)
-            else:
-                self.other_save_button_event()
-        self.text.delete(1.0, END)
-    #±£´æ°´Å¥
-    def save_button_event(self):
-        filename = self.src_filename if self.src_filename else filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
-        if filename:
-            self.__sava_data(filename)
-    #Áí´æÎª
-    def other_save_button_event(self):
-        f = filedialog.asksaveasfile(filetypes=[('Text file', 'txt'), ('All file', '*')])
-        if f:
-            f.write(self.__get())
-    #²éÕÒ
-    def find_button_event(self):
-        data = self.__get()
-        find_data = self.find_text.get(1.0, END).strip()
-        if find_data not in data:
-            messagebox.showinfo('Error', 'This text is not found')
-        else:
-            self.count.set(str(data.count(find_data)))
-    #Ìæ»»
-    def replace_button_event(self):
-        find_data = self.find_text.get(1.0, END).strip()
-        replace_data = self.replace_text.get(1.0, END).strip()
-        data = self.__get()
-        data = data.replace(find_data, replace_data)
-        self.__del_and_set(data)
-    #´óÐ´
-    def upper_button_event(self):
-        data = self.__get().upper()
-        self.__del_and_set(data)
-    #Ð¡Ð´
-    def lower_button_event(self):
-        data = self.__get().lower()
-        self.__del_and_set(data)
-    #Çå¿Õ
-    def clear_button(self):
-        self.text.delete(1.0, END)
-    #±£´æÎÄ¼þ
-    def __sava_data(self, filename):
-        with open(filename, 'w') as f:
-            f.write(self.__get())
-        messagebox.showinfo('Notebook', 'Save success')
-    #»ñÈ¡ÎÄ±¾
-    def __get(self):
-        # ÕâÀïÒ»¶¨ÒªÓÐstrip
-        return self.text.get(1.0, END).strip()
-    #¸üÐÂ
-    def __del_and_set(self, data):
-        self.text.delete(1.0, END)
-        self.text.insert(INSERT, data)
+		# ×ó²à¿Ø¼þ
+		Button(root, text='Find', relief=button_relief, width=top_button_width, command=self.find_button_event) \
+			.grid(row=2, column=0, sticky=N)
+		self.find_text = Text(root, width=top_button_width, height=2)
+		self.find_text.grid(row=2, column=1)
+		Label(root, text='Count:').grid(row=3, column=0, sticky=N)
+		self.count_label = Label(root, textvariable=self.count)
+		self.count_label.grid(row=3, column=1)
+		Button(root, text='Replace:', relief=button_relief, width=top_button_width, command=self.replace_button_event).grid(
+			row=4, column=0, sticky=N)
+		self.replace_text = Text(root, width=top_button_width, height=2)
+		self.replace_text.grid(row=4, column=1, sticky=N)
+		Button(root, text='Uppercase', relief=button_relief, width=top_button_width, command=self.upper_button_event).grid(
+			row=5, column=0, sticky=N)
+		Button(root, text='Lowercase', relief=button_relief, width=top_button_width, command=self.lower_button_event).grid(
+			row=5, column=1, sticky=N)
+		#ÓÒ²àÎÄ±¾¿ò
+		self.text = Text(root)
+		self.text.grid(row=2, column=2, columnspan=6, rowspan=15)
+	#´ò¿ª
+	def open_button_event(self):
+		self.new_button_event()
+		# »ñÈ¡ÎÄ¼þÃû
+		self.src_filename = filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
+		if self.src_filename:
+			# »ñÈ¡Êý¾Ý
+			data = open(self.src_filename).read()
+			# Ìî³äµ½text¿Ø¼þ
+			#self.text.delete(1.0, END)
+			self.text.insert(INSERT, data)
+	#ÐÂ½¨
+	def new_button_event(self):
+		data = self.__get()
+		if data and messagebox.askokcancel('Notebook', 'Save this file?'):
+			if self.src_filename:
+				self.__sava_data(self.src_filename)
+			else:
+				self.other_save_button_event()
+		self.text.delete(1.0, END)
+	#±£´æ°´Å¥
+	def save_button_event(self):
+		filename = self.src_filename if self.src_filename else filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
+		if filename:
+			self.__sava_data(filename)
+	#Áí´æÎª
+	def other_save_button_event(self):
+		f = filedialog.asksaveasfile(filetypes=[('Text file', 'txt'), ('All file', '*')])
+		if f:
+			f.write(self.__get())
+	#²éÕÒ
+	def find_button_event(self):
+		data = self.__get()
+		find_data = self.find_text.get(1.0, END).strip()
+		if find_data not in data:
+			messagebox.showinfo('Error', 'This text is not found')
+		else:
+			self.count.set(str(data.count(find_data)))
+	#Ìæ»»
+	def replace_button_event(self):
+		find_data = self.find_text.get(1.0, END).strip()
+		replace_data = self.replace_text.get(1.0, END).strip()
+		data = self.__get()
+		data = data.replace(find_data, replace_data)
+		self.__del_and_set(data)
+	#´óÐ´
+	def upper_button_event(self):
+		data = self.__get().upper()
+		self.__del_and_set(data)
+	#Ð¡Ð´
+	def lower_button_event(self):
+		data = self.__get().lower()
+		self.__del_and_set(data)
+	#Çå¿Õ
+	def clear_button(self):
+		if easygui.ccbox("Clear this file?","Warning"):
+			self.text.delete(1.0, END)
+	#±£´æÎÄ¼þ
+	def __sava_data(self, filename):
+		with open(filename, 'w') as f:
+			f.write(self.__get())
+		messagebox.showinfo('Notebook', 'Save success')
+	#»ñÈ¡ÎÄ±¾
+	def __get(self):
+		# ÕâÀïÒ»¶¨ÒªÓÐstrip
+		return self.text.get(1.0, END).strip()
+	#¸üÐÂ
+	def __del_and_set(self, data):
+		self.text.delete(1.0, END)
+		self.text.insert(INSERT, data)
+
+def vi_start():
+	main = MainWindow()
+	mainloop()  
+	return 0
 
 def vi():
-    main = MainWindow()
-    mainloop()  
+   if easygui.ccbox("Run notebook?","Notebook",["[Y]","[N]"]):
+	   return vi_start()
