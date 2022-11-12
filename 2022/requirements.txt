@@ -1,4 +1,3 @@
 easygui
 flask
-wxpython
 requests
