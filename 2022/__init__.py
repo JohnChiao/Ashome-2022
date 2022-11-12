@@ -1,4 +1,4 @@
-from distutils.log import debug
+print("Booting programs...")
 import platform
 from run import *
 from pyop import *
@@ -8,6 +8,7 @@ import re
 import setup
 import getpass
 import easygui
+print("Initializing shell...")
 # Global Define Start
 VERSION = "2022.11.5"
 code = ""
@@ -15,6 +16,7 @@ _prompt = {"nt" : " > ", "posix" : " $ "}
 cter = False
 username = getpass.getuser()
 ulist = [username]
+print("Python V"+platform.python_version())
 # Global Define Stop
 # Login
 
@@ -108,5 +110,4 @@ def start():
 
 
 if __name__ == "__main__":
-	print("Python",platform.python_version(),"shell")
 	start()
