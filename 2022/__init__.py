@@ -82,9 +82,14 @@ def main():
 			except AttributeError as err:
 				print("AttributeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
 
+			except IndexError as err:
+				print("IndexError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+
 def shutdown():
 	if easygui.boolbox("Do you want to exit?","Exit"):
+		print("Logouting user",User.activaty.name,"...")
 		User.activaty.logout()
+		print("Quiting terminal...")
 		quit()
 	else:
 		main()

@@ -1,4 +1,4 @@
-﻿from ast import Pow
+﻿import easygui
 
 
 MODULE = "calc"
@@ -31,32 +31,22 @@ def pow(x, y):
 
 def calc():
 	# 用户输入
-	print("["+MODULE+"]"+"选择运算：")
-	print("["+MODULE+"]"+"1、相加")
-	print("["+MODULE+"]"+"2、相减")
-	print("["+MODULE+"]"+"3、相乘")
-	print("["+MODULE+"]"+"4、相除")
-	print("["+MODULE+"]"+"5、乘方")
- 
-	choice = input("["+MODULE+"]"+"输入你的选择(1/2/3/4):")
- 
-	num1 = int(input("["+MODULE+"]"+"输入第一个数字: "))
-	num2 = int(input("["+MODULE+"]"+"输入第二个数字: "))
- 
-	if choice == '1':
+	choice = easygui.choicebox("Select an operator", "Calculator", ["Add","Sub","Multiply","Divide","Pow","Quit"])
+	nums = easygui.multenterbox("["+MODULE+"]"+"输入数字: ", "Calculator", ["Number 1", "Number 2"])
+	num1, num2 = int(nums[0]), int(nums[1])
+	if choice == "Add":
 		print("["+MODULE+"]"+str(num1),"+",str(num2),"=", add(num1,num2))
  
-	elif choice == '2':
+	elif choice == "Sub":
 		print("["+MODULE+"]"+str(num1),"-",str(num2),"=", subtract(num1,num2))
  
-	elif choice == '3':
+	elif choice == "Multiply":
 		print("["+MODULE+"]"+str(num1),"*",str(num2),"=", multiply(num1,num2))
  
-	elif choice == '4':
+	elif choice == "Divide":
 		print("["+MODULE+"]"+str(num1),"/",str(num2),"=", divide(num1,num2))
 
-	elif choice == '5':
+	elif choice == "Pow":
 		print("["+MODULE+"]"+str(num1),"^",str(num2),"=", pow(num1,num2))
-
 	else:
-		print("["+MODULE+"]"+"非法输入")
+		return 0
