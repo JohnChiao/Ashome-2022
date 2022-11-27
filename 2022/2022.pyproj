@@ -36,6 +36,7 @@
     <Compile Include="Applet\updater.py" />
     <Compile Include="Applet\vi.py" />
     <Compile Include="Applet\weblib.py" />
+    <Compile Include="Applet\get.py" />
     <Compile Include="run.py" />
     <Compile Include="setup.py" />
     <Compile Include="__init__.py" />
