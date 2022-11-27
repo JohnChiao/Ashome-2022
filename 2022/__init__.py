@@ -111,7 +111,7 @@ def start():
 			else:
 				continue
 		else:
-			quit()
+			shutdown()
 
 
 if __name__ == "__main__":
