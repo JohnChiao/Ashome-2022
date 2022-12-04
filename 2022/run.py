@@ -16,7 +16,7 @@ import math
 import gc
 # Customize packages
 sys.path.append("./Applet")
-sys.path.append("./Flask")
+sys.path.append("./Pack")
 from calander import *
 from compute import *
 from db import *
@@ -37,3 +37,4 @@ class User:
 	def logout(self):
 		User.activaty = None
 		return 0
+	
