@@ -26,8 +26,9 @@ def main():
 	code = "Undefined"
 	global cter
 	while True:
+		user = User.activaty
 		pwd = os.getcwd()
-		prompt_info = User.activaty.name+" @ "+platform.system()+" - \n\r"
+		prompt_info = user.name+" @ "+platform.system()+" - \n\r"
 		prompt_info = "" if cter else prompt_info
 		code = input(prompt_info+pwd+_prompt[os.name])
 		if code == "-q":
@@ -56,8 +57,8 @@ def main():
 
 		else:
 			try:
-				exec(User.activaty.history if code == "-h" else code)
-				if User.activaty == None:
+				exec(user.history if code == "-h" else code)
+				if user == None:
 					admin = User(easygui.enterbox("Input new username:","Login"))
 					main()
 

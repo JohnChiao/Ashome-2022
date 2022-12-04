@@ -4,12 +4,11 @@ import fileutils as utils
 
 
 def ls(obj = os.getcwd()):
-	for curDir, dirs, files in os.walk(obj):
-		print("["+MODULE+"]"+"====================")
-		print("["+MODULE+"]"+"现在的目录：" + curDir)
-		print("["+MODULE+"]"+"该目录下包含的子目录：" + str(dirs))
-		print("["+MODULE+"]"+"该目录下包含的文件：" + str(files))
-	return os.walk(obj)
+	for root, dirs, files in os.walk("."):
+		for name in files:
+			print(os.path.join(root, name))
+		for name in dirs:
+			print(os.path.join(root, name))
 
 
 def formatTime(longtime):
