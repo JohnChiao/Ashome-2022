@@ -43,7 +43,7 @@ def main():
 		elif code == "cd":
 			file.cd(easygui.diropenbox("Choice directory:","cd"))
 
-		elif "cd " in code and len(code) > 3:
+		elif code[:3] == "cd " and len(code) > 3:
 			file.cd(code[3:])
 
 		elif code == "~":
@@ -55,15 +55,15 @@ def main():
 		elif code == "-l":
 			return start()
 
+		elif code == "python":
+			python()
+
 		else:
 			try:
 				exec(user.history if code == "-h" else code)
 				if user == None:
-					admin = User(easygui.enterbox("Input new username:","Login"))
+					User(easygui.enterbox("Input new username:","Login"))
 					main()
-
-			except KeyboardInterrupt:
-				shutdown()
 
 			except NameError as err:
 				print("NameError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
