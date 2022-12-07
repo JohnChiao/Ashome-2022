@@ -1119,6 +1119,7 @@
     <Folder Include="env\Lib\site-packages\_distutils_hack\" />
     <Folder Include="env\Lib\site-packages\_distutils_hack\__pycache__\" />
     <Folder Include="env\Scripts\" />
+    <Folder Include="Resources\" />
     <Folder Include="Pack\" />
   </ItemGroup>
   <ItemGroup>

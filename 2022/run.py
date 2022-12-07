@@ -25,11 +25,15 @@ from file import *
 from get import *
 from unicode import *
 from vi import *
+_USERID = -1
 
 
 class User:
 	def __init__(self, name):
+		global _USERID
 		self.name = name
+		self.id = _USERID
+		_USERID += 1
 		self.history = ""
 		User.activaty = self
 		self.pkg = PackSystem()
@@ -60,3 +64,6 @@ class PackSystem(User):
 				self.uninstall()
 			else:
 				break
+
+
+SYSTEM = User("SYSTEM")
