@@ -1,20 +1,37 @@
 ﻿import easygui
+print("Imported",easygui)
 import gc
+print("Imported",gc)
 import math
+print("Imported",math)
 import operator
+print("Imported",operator)
 import os
+print("Imported",os)
 import random
+print("Imported",random)
 import re
+print("Imported",re)
 import shutil
+print("Imported",shutil)
 import socket
+print("Imported",socket)
 import string
+print("Imported",string)
 import sys
+print("Imported",sys)
 import threading
+print("Imported",threading)
 import time
+print("Imported",time)
 import tkinter
+print("Imported",tkinter)
 import turtle
+print("Imported",turtle)
 import wave
+print("Imported",wave)
 import zipfile
+print("Imported",zipfile)
 # Customize packages
 sys.path.append("./Applet")
 sys.path.append("./Pack")
@@ -65,5 +82,5 @@ class PackSystem(User):
 			else:
 				break
 
-
+print("Initializing user...")
 SYSTEM = User("SYSTEM")

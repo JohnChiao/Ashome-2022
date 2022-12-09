@@ -53,7 +53,7 @@ def main():
 			exec("import "+code[3:])
 
 		elif code == "-l":
-			return start()
+			break
 
 		elif code == "python":
 			python()
@@ -85,6 +85,12 @@ def main():
 
 			except IndexError as err:
 				print("IndexError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+			
+			except:
+				print("Error:\n\tCode:\n\t\t",code)
+
+			else:
+				print(">",code)
 
 def shutdown():
 	if easygui.boolbox("Do you want to exit?","Exit"):
