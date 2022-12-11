@@ -1,25 +1,25 @@
-from tkinter import *  # ¿Ø¼ş»ù´¡°ü£¬µ¼ÈëÕâ¸ö°üºó£¬Õâ¸ö°üÏÂµÄËùÓĞº¯Êı¿ÉÒÔÖ±½Óµ÷ÓÃ
+ï»¿from tkinter import *  # æ§ä»¶åŸºç¡€åŒ…ï¼Œå¯¼å…¥è¿™ä¸ªåŒ…åï¼Œè¿™ä¸ªåŒ…ä¸‹çš„æ‰€æœ‰å‡½æ•°å¯ä»¥ç›´æ¥è°ƒç”¨
 from tkinter import filedialog, messagebox
 from tkinter.ttk import Combobox
 from urllib.parse import quote
 import easygui
 
 class MainWindow():
-	# ³õÊ¼»¯
+	# åˆå§‹åŒ–
 	def __init__(self):
-		top_button_width = 10 #ÓÃÓÚÉèÖÃ°´Å¥¿í¶È
-		button_relief = RAISED #ÓÃÓÚÉèÖÃÍ¼±êĞ§¹û£¬ÕâÀïÉèÎªÍ¹Æğ
+		top_button_width = 10 #ç”¨äºè®¾ç½®æŒ‰é’®å®½åº¦
+		button_relief = RAISED #ç”¨äºè®¾ç½®å›¾æ ‡æ•ˆæœï¼Œè¿™é‡Œè®¾ä¸ºå‡¸èµ·
 
-		# ´´½¨¶¥²ã´°¿Ú
+		# åˆ›å»ºé¡¶å±‚çª—å£
 		root = Tk()
 		self.src_filename = None
 		self.count = StringVar()
 		self.count.set('0')
 		root.title('Notebook')
-		# ¿í¡¢¸ßÉèÎª²»¿É±ä,Ä¬ÈÏÎªTrue
+		# å®½ã€é«˜è®¾ä¸ºä¸å¯å˜,é»˜è®¤ä¸ºTrue
 		root.resizable(width=False, height=False)
 
-		# ÉÏ²¿¿Ø¼ş
+		# ä¸Šéƒ¨æ§ä»¶
 		Button(root, text='Open file', relief=button_relief, width=top_button_width, command=self.open_button_event).grid(row=0, column=0)
 		Button(root, text='New text file', relief=button_relief, width=top_button_width, command=self.new_button_event).grid(row=0, column=1)
 		Button(root, text='Save', relief=button_relief, width=top_button_width,
@@ -28,10 +28,10 @@ class MainWindow():
 			   command=self.other_save_button_event).grid(row=0, column=4)
 		Button(root, text='Clear this file', width=top_button_width, command=self.clear_button).grid(row=0, column=5)
 
-		# ¿ÕÒ»ĞĞ
+		# ç©ºä¸€è¡Œ
 		Label(root, text='').grid(row=1)
 
-		# ×ó²à¿Ø¼ş
+		# å·¦ä¾§æ§ä»¶
 		Button(root, text='Find', relief=button_relief, width=top_button_width, command=self.find_button_event) \
 			.grid(row=2, column=0, sticky=N)
 		self.find_text = Text(root, width=top_button_width, height=2)
@@ -47,21 +47,21 @@ class MainWindow():
 			row=5, column=0, sticky=N)
 		Button(root, text='Lowercase', relief=button_relief, width=top_button_width, command=self.lower_button_event).grid(
 			row=5, column=1, sticky=N)
-		#ÓÒ²àÎÄ±¾¿ò
+		#å³ä¾§æ–‡æœ¬æ¡†
 		self.text = Text(root)
 		self.text.grid(row=2, column=2, columnspan=6, rowspan=15)
-	#´ò¿ª
+	#æ‰“å¼€
 	def open_button_event(self):
 		self.new_button_event()
-		# »ñÈ¡ÎÄ¼şÃû
+		# è·å–æ–‡ä»¶å
 		self.src_filename = filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
 		if self.src_filename:
-			# »ñÈ¡Êı¾İ
+			# è·å–æ•°æ®
 			data = open(self.src_filename).read()
-			# Ìî³äµ½text¿Ø¼ş
+			# å¡«å……åˆ°textæ§ä»¶
 			#self.text.delete(1.0, END)
 			self.text.insert(INSERT, data)
-	#ĞÂ½¨
+	#æ–°å»º
 	def new_button_event(self):
 		data = self.__get()
 		if data and messagebox.askokcancel('Notebook', 'Save this file?'):
@@ -70,17 +70,17 @@ class MainWindow():
 			else:
 				self.other_save_button_event()
 		self.text.delete(1.0, END)
-	#±£´æ°´Å¥
+	#ä¿å­˜æŒ‰é’®
 	def save_button_event(self):
 		filename = self.src_filename if self.src_filename else filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
 		if filename:
 			self.__sava_data(filename)
-	#Áí´æÎª
+	#å¦å­˜ä¸º
 	def other_save_button_event(self):
 		f = filedialog.asksaveasfile(filetypes=[('Text file', 'txt'), ('All file', '*')])
 		if f:
 			f.write(self.__get())
-	#²éÕÒ
+	#æŸ¥æ‰¾
 	def find_button_event(self):
 		data = self.__get()
 		find_data = self.find_text.get(1.0, END).strip()
@@ -88,35 +88,35 @@ class MainWindow():
 			messagebox.showinfo('Error', 'This text is not found')
 		else:
 			self.count.set(str(data.count(find_data)))
-	#Ìæ»»
+	#æ›¿æ¢
 	def replace_button_event(self):
 		find_data = self.find_text.get(1.0, END).strip()
 		replace_data = self.replace_text.get(1.0, END).strip()
 		data = self.__get()
 		data = data.replace(find_data, replace_data)
 		self.__del_and_set(data)
-	#´óĞ´
+	#å¤§å†™
 	def upper_button_event(self):
 		data = self.__get().upper()
 		self.__del_and_set(data)
-	#Ğ¡Ğ´
+	#å°å†™
 	def lower_button_event(self):
 		data = self.__get().lower()
 		self.__del_and_set(data)
-	#Çå¿Õ
+	#æ¸…ç©º
 	def clear_button(self):
 		if easygui.ccbox("Clear this file?","Warning"):
 			self.text.delete(1.0, END)
-	#±£´æÎÄ¼ş
+	#ä¿å­˜æ–‡ä»¶
 	def __sava_data(self, filename):
 		with open(filename, 'w') as f:
 			f.write(self.__get())
 		messagebox.showinfo('Notebook', 'Save success')
-	#»ñÈ¡ÎÄ±¾
+	#è·å–æ–‡æœ¬
 	def __get(self):
-		# ÕâÀïÒ»¶¨ÒªÓĞstrip
+		# è¿™é‡Œä¸€å®šè¦æœ‰strip
 		return self.text.get(1.0, END).strip()
-	#¸üĞÂ
+	#æ›´æ–°
 	def __del_and_set(self, data):
 		self.text.delete(1.0, END)
 		self.text.insert(INSERT, data)
