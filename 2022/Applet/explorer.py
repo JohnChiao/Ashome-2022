@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-__author__ = 'Yang'
 
 from tkinter import *
 from tkinter import ttk, messagebox, filedialog
@@ -19,6 +17,7 @@ class Application_UI(object):
 		# 设置UI界面
 		window = Tk()
 		self.root = window
+		self.path = "\\"
 		win_width = 800
 		win_height = 600
 		
@@ -276,6 +275,6 @@ class Application(Application_UI):
 		with open(select_path, mode = mode, encoding = encoding) as f:
 			self.text_obj.insert(1.0, f.read())
 
-if __name__ == "__main__":
-	Application()
+def file():
+	return Application()
 

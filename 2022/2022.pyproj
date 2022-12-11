@@ -895,7 +895,6 @@
     <Compile Include="env\Lib\site-packages\werkzeug\__init__.py" />
     <Compile Include="env\Lib\site-packages\_distutils_hack\override.py" />
     <Compile Include="env\Lib\site-packages\_distutils_hack\__init__.py" />
-    <Compile Include="explorer.py" />
     <Compile Include="run.py" />
     <Compile Include="setup.py" />
     <Compile Include="__init__.py" />

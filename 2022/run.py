@@ -38,6 +38,7 @@ sys.path.append("./Pack")
 from calander import *
 from compute import *
 from db import *
+from explorer import *
 from file import *
 from get import *
 from unicode import *

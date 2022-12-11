@@ -41,13 +41,13 @@ def main():
 			os.chdir(".")
 
 		elif code == "cd":
-			file.cd(easygui.diropenbox("Choice directory:","cd"))
+			cd(easygui.diropenbox("Choice directory:","cd"))
 
 		elif code[:3] == "cd " and len(code) > 3:
-			file.cd(code[3:])
+			cd(code[3:])
 
 		elif code == "~":
-			file.cd(os.path.expanduser('~'))
+			cd(os.path.expanduser('~'))
 
 		elif "-i" in code:
 			exec("import "+code[3:])
