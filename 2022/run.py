@@ -1,4 +1,4 @@
-﻿import easygui
+import easygui
 print("Imported",easygui)
 import gc
 print("Imported",gc)
@@ -38,7 +38,6 @@ sys.path.append("./Pack")
 from calander import *
 from compute import *
 from db import *
-from explorer import *
 from file import *
 from get import *
 from unicode import *

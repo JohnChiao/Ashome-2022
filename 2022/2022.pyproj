@@ -28,7 +28,6 @@
     <Compile Include="Applet\calander.py" />
     <Compile Include="Applet\compute.py" />
     <Compile Include="Applet\db.py" />
-    <Compile Include="Applet\explorer.py" />
     <Compile Include="Applet\file.py" />
     <Compile Include="Applet\fileutils.py" />
     <Compile Include="Applet\format.py" />
@@ -895,6 +894,7 @@
     <Compile Include="env\Lib\site-packages\werkzeug\__init__.py" />
     <Compile Include="env\Lib\site-packages\_distutils_hack\override.py" />
     <Compile Include="env\Lib\site-packages\_distutils_hack\__init__.py" />
+    <Compile Include="Pack\cvpaint\__init__.py" />
     <Compile Include="run.py" />
     <Compile Include="setup.py" />
     <Compile Include="__init__.py" />
@@ -1120,6 +1120,7 @@
     <Folder Include="env\Lib\site-packages\_distutils_hack\" />
     <Folder Include="env\Lib\site-packages\_distutils_hack\__pycache__\" />
     <Folder Include="env\Scripts\" />
+    <Folder Include="Pack\cvpaint\" />
     <Folder Include="Resources\" />
     <Folder Include="Pack\" />
   </ItemGroup>
