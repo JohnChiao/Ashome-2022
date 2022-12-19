@@ -44,3 +44,9 @@ class Canva(object):
 		self.d(endx, starty, endx, endy)
 		self.d(endx, endy, startx, endy)
 		self.d(startx, endy, startx, starty)
+
+	def c(self, r = 0, posx = 0, posy = 0):
+		self.pen.penup()
+		self.pen.goto(posx + r, posy)
+		self.pen.pendown()
+		self.pen.circle(r,360)
