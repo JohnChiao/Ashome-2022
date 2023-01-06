@@ -368,3 +368,4 @@ __pycache__/
 *.db
 2022/Cache.html
 Cache.html
+.vscode/*

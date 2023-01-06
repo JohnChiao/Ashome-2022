@@ -1,7 +1,7 @@
+from pyop import *
+from Applet import *
 print("Booting programs...")
 import platform
-from run import *
-from pyop import *
 import os
 import sys
 import re

@@ -33,10 +33,8 @@ print("Imported",wave)
 import zipfile
 print("Imported",zipfile)
 # Customize packages
-sys.path.append("./Applet")
-sys.path.append("./Pack")
-from calander import *
-from compute import *
+from cld import *
+from calc import *
 from db import *
 from file import *
 from get import *
