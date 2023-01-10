@@ -15,9 +15,9 @@ code = ""
 _prompt = {"nt" : " > ", "posix" : " $ "}
 cter = False
 username = getpass.getuser()
-ulist = [username]
+user = User(username)
 print("Python V"+platform.python_version())
-# Global Define Stop
+# Global Define End
 # Login
 
 
@@ -25,6 +25,7 @@ print("Python V"+platform.python_version())
 def main():
 	code = "Undefined"
 	global cter
+	global user
 	while True:
 		user = User.activaty
 		pwd = os.getcwd()
@@ -93,6 +94,7 @@ def main():
 			else:
 				print(">",code)
 
+
 def shutdown():
 	if easygui.boolbox("Do you want to exit?","Exit"):
 		print("Logouting user",User.activaty.name,"...")
@@ -104,13 +106,11 @@ def shutdown():
 
 
 def start():
-	global ulist
 	while True:
 		if easygui.ccbox("Welcome!","Start",["[L]ogin or Sign up","[Q]uit"]):
-			ulogin = easygui.choicebox("Login","Login",ulist+["Sign Up..."])
+			ulogin = easygui.choicebox("Login","Login",USERS+["Sign Up..."])
 			if ulogin == "Sign Up...":
 				t = easygui.enterbox("Input User Name:","Sign Up")
-				ulist.append(t if t else "Guest")
 				User(name = t)
 				main()
 			elif ulogin:
