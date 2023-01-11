@@ -68,31 +68,38 @@ def main():
 					main()
 
 			except NameError as err:
-				print("NameError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "NameError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except TypeError as err:
-				print("TypeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "TypeError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except IOError as err:
-				print("IOError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "IOError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 				
 			except KeyError as err:
-				print("KeyError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "KeyError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except ValueError as err:
-				print("ValueError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "ValueError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except AttributeError as err:
-				print("AttributeError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "AttributeError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except IndexError as err:
-				print("IndexError:\n\tCode:\n\t\t",code,"\n\tDatail:\n\t\t",err,"\n")
+				print("\n\r", "IndexError:\n\tCode:\n\t\t",
+				      code, "\n\tDatail:\n\t\t", err, "\n")
 			
 			except:
-				print("Error:\n\tCode:\n\t\t",code)
+				print("\n\r", "Error:\n\tCode:\n\t\t", code)
 
 			else:
-				print(">",code)
+				print("\n\r")
 
 
 def shutdown():
