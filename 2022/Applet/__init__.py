@@ -42,22 +42,28 @@ from file import *
 from get import *
 from unicode import *
 from vi import *
-_USERID = 0
+USERID = 0
 USERS = []
+_PASSWD = {}
 
 
 class User:
-	def __init__(self, name):
-		global _USERID
-		self.name = name
-		if self.name not in USERS:
-			self.id = _USERID
-			_USERID += 1
+	def __init__(self, name, passwd = ""):
+		global USERID
+		if name not in USERS:
+			self.id = USERID
+			User.activaty = self
+			self.name = name
+			USERID += 1
 			USERS.append(self.name)
 			self.history = ""
-		else:
+			_PASSWD[name] = passwd
+		elif passwd == _PASSWD[name]:
+			self.name = name
 			self.id = USERS.index(self.name)
-		User.activaty = self
+			User.activaty = self
+		else:
+			raise ConnectionError("Password is wrong!")
 
 	def logout(self):
 		User.activaty = None
@@ -69,4 +75,4 @@ def envvar():
 
 
 print("Initializing user...")
-SYSTEM = User("SYSTEM")
+SYSTEM = User("SYSTEM", "rootsystem")
