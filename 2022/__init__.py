@@ -10,7 +10,7 @@ import getpass
 import easygui
 print("Initializing shell...")
 # Global Define Start
-VERSION = "2022.11.5"
+VERSION = "2022.11.8"
 code = ""
 _prompt = {"nt" : " > ", "posix" : " $ "}
 cter = False
