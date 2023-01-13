@@ -65,31 +65,31 @@ def main():
 
 			except NameError as err:
 				print("\n\r", "NameError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except TypeError as err:
 				print("\n\r", "TypeError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except IOError as err:
 				print("\n\r", "IOError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 				
 			except KeyError as err:
 				print("\n\r", "KeyError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except ValueError as err:
 				print("\n\r", "ValueError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except AttributeError as err:
 				print("\n\r", "AttributeError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 
 			except IndexError as err:
 				print("\n\r", "IndexError:\n\tCode:\n\t\t",
-                                    code, "\n\tDatail:\n\t\t", err, "\n")
+									code, "\n\tDatail:\n\t\t", err, "\n")
 			
 			except:
 				print("\n\r", "Error:\n\tCode:\n\t\t", code)
@@ -114,7 +114,7 @@ def start():
 			ulogin = easygui.choicebox("Login","Login",USERS+["Sign Up..."])
 			if ulogin == "Sign Up...":
 				t = easygui.multpasswordbox("Sign up:", "Sign Up", [
-				                            "Username", "Password"])
+											"Username", "Password"])
 				if not easygui.ynbox("Sign up "+t[0]+"?", "Sign Up"):
 					t = None
 				if t[0]:
