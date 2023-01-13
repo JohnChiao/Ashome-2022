@@ -9,6 +9,5 @@ steps:
 - script: |
    git remote add github https://JohnChiao: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@github.com//JohnChiao/Ashome-2022.git
    git checkout -b $(branch)
-   git pull github $(branch)
    git push -u github $(branch)
   displayName: 'Commit Repository to GitHub'
