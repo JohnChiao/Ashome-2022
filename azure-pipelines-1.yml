@@ -1,0 +1,13 @@
+variables:
+  branch: 'master'
+
+trigger:
+- master
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- script: |
+   git remote add github https://JohnChiao:qwer030610@github.com//JohnChiao/Ashome-2022.git
+   git checkout -b $(branch)
+   git push -u github $(branch)
+  displayName: 'Command Line Script'
