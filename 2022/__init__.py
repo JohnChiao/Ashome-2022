@@ -1,4 +1,3 @@
-from pyop import *
 from Applet import *
 print("Booting programs...")
 import platform
@@ -56,9 +55,6 @@ def main():
 
 		elif code == "-l":
 			break
-
-		elif code == "python":
-			python()
 
 		else:
 			try:
