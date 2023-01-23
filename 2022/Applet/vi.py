@@ -1,131 +1,193 @@
-﻿from tkinter import *  # 控件基础包，导入这个包后，这个包下的所有函数可以直接调用
-from tkinter import filedialog, messagebox
-from tkinter.ttk import Combobox
-from urllib.parse import quote
-import easygui
-
-class MainWindow():
-	# 初始化
-	def __init__(self):
-		top_button_width = 10 #用于设置按钮宽度
-		button_relief = RAISED #用于设置图标效果，这里设为凸起
-
-		# 创建顶层窗口
-		root = Tk()
-		self.src_filename = None
-		self.count = StringVar()
-		self.count.set('0')
-		root.title('Notebook')
-		# 宽、高设为不可变,默认为True
-		root.resizable(width=False, height=False)
-
-		# 上部控件
-		Button(root, text='Open file', relief=button_relief, width=top_button_width, command=self.open_button_event).grid(row=0, column=0)
-		Button(root, text='New text file', relief=button_relief, width=top_button_width, command=self.new_button_event).grid(row=0, column=1)
-		Button(root, text='Save', relief=button_relief, width=top_button_width,
-			   command=self.save_button_event).grid(row=0, column=3)
-		Button(root, text='Save as...', relief=button_relief, width=top_button_width,
-			   command=self.other_save_button_event).grid(row=0, column=4)
-		Button(root, text='Clear this file', width=top_button_width, command=self.clear_button).grid(row=0, column=5)
-
-		# 空一行
-		Label(root, text='').grid(row=1)
-
-		# 左侧控件
-		Button(root, text='Find', relief=button_relief, width=top_button_width, command=self.find_button_event) \
-			.grid(row=2, column=0, sticky=N)
-		self.find_text = Text(root, width=top_button_width, height=2)
-		self.find_text.grid(row=2, column=1)
-		Label(root, text='Count:').grid(row=3, column=0, sticky=N)
-		self.count_label = Label(root, textvariable=self.count)
-		self.count_label.grid(row=3, column=1)
-		Button(root, text='Replace:', relief=button_relief, width=top_button_width, command=self.replace_button_event).grid(
-			row=4, column=0, sticky=N)
-		self.replace_text = Text(root, width=top_button_width, height=2)
-		self.replace_text.grid(row=4, column=1, sticky=N)
-		Button(root, text='Uppercase', relief=button_relief, width=top_button_width, command=self.upper_button_event).grid(
-			row=5, column=0, sticky=N)
-		Button(root, text='Lowercase', relief=button_relief, width=top_button_width, command=self.lower_button_event).grid(
-			row=5, column=1, sticky=N)
-		#右侧文本框
-		self.text = Text(root)
-		self.text.grid(row=2, column=2, columnspan=6, rowspan=15)
-	#打开
-	def open_button_event(self):
-		self.new_button_event()
-		# 获取文件名
-		self.src_filename = filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
-		if self.src_filename:
-			# 获取数据
-			data = open(self.src_filename).read()
-			# 填充到text控件
-			#self.text.delete(1.0, END)
-			self.text.insert(INSERT, data)
-	#新建
-	def new_button_event(self):
-		data = self.__get()
-		if data and messagebox.askokcancel('Notebook', 'Save this file?'):
-			if self.src_filename:
-				self.__sava_data(self.src_filename)
-			else:
-				self.other_save_button_event()
-		self.text.delete(1.0, END)
-	#保存按钮
-	def save_button_event(self):
-		filename = self.src_filename if self.src_filename else filedialog.askopenfilename(filetypes=[('Text file', 'txt'), ('All file', '*')])
-		if filename:
-			self.__sava_data(filename)
-	#另存为
-	def other_save_button_event(self):
-		f = filedialog.asksaveasfile(filetypes=[('Text file', 'txt'), ('All file', '*')])
-		if f:
-			f.write(self.__get())
-	#查找
-	def find_button_event(self):
-		data = self.__get()
-		find_data = self.find_text.get(1.0, END).strip()
-		if find_data not in data:
-			messagebox.showinfo('Error', 'This text is not found')
-		else:
-			self.count.set(str(data.count(find_data)))
-	#替换
-	def replace_button_event(self):
-		find_data = self.find_text.get(1.0, END).strip()
-		replace_data = self.replace_text.get(1.0, END).strip()
-		data = self.__get()
-		data = data.replace(find_data, replace_data)
-		self.__del_and_set(data)
-	#大写
-	def upper_button_event(self):
-		data = self.__get().upper()
-		self.__del_and_set(data)
-	#小写
-	def lower_button_event(self):
-		data = self.__get().lower()
-		self.__del_and_set(data)
-	#清空
-	def clear_button(self):
-		if easygui.ccbox("Clear this file?","Warning"):
-			self.text.delete(1.0, END)
-	#保存文件
-	def __sava_data(self, filename):
-		with open(filename, 'w') as f:
-			f.write(self.__get())
-		messagebox.showinfo('Notebook', 'Save success')
-	#获取文本
-	def __get(self):
-		# 这里一定要有strip
-		return self.text.get(1.0, END).strip()
-	#更新
-	def __del_and_set(self, data):
-		self.text.delete(1.0, END)
-		self.text.insert(INSERT, data)
-
-def vi_start():
-	main = MainWindow()
-	mainloop()  
-	return 0
-
+﻿from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import *
+import os
+ 
+filename = ""
+ 
+ 
+def author():
+    showinfo(title="作者", message="JohnChiao")
+ 
+ 
+def power():
+    showinfo(title="版权信息", message="GPL V3.0 Opensource")
+ 
+ 
+def mynew():
+    global top, filename, textPad
+    top.title("未命名文件")
+    filename = None
+    textPad.delete(1.0, END)
+ 
+ 
+def myopen():
+    global filename
+    filename = askopenfilename(defaultextension=".txt")
+    if filename == "":
+        filename = None
+    else:
+        top.title("记事本" + os.path.basename(filename))
+        textPad.delete(1.0, END)
+        f = open(filename, 'r')
+        textPad.insert(1.0, f.read())
+        f.close()
+ 
+ 
+def mysave():
+    global filename
+    try:
+        f = open(filename, 'w')
+        msg = textPad.get(1.0, 'end')
+        f.write(msg)
+        f.close()
+    except:
+        mysaveas()
+ 
+ 
+def mysaveas():
+    global filename
+    f = asksaveasfilename(initialfile="未命名.txt", defaultextension=".txt")
+    filename = f
+    fh = open(f, 'w')
+    msg = textPad.get(1.0, END)
+    fh.write(msg)
+    fh.close()
+    top.title("记事本 " + os.path.basename(f))
+ 
+ 
+def cut():
+    global textPad
+    textPad.event_generate("<<Cut>>")
+ 
+ 
+def copy():
+    global textPad
+    textPad.event_generate("<<Copy>>")
+ 
+ 
+def paste():
+    global textPad
+    textPad.event_generate("<<Paste>>")
+ 
+ 
+def undo():
+    global textPad
+    textPad.event_generate("<<Undo>>")
+ 
+ 
+def redo():
+    global textPad
+    textPad.event_generate("<<Redo>>")
+ 
+ 
+def select_all():
+    global textPad
+    # textPad.event_generate("<<Cut>>")
+    textPad.tag_add("sel", "1.0", "end")
+ 
+ 
+def find():
+    t = Toplevel(top)
+    t.title("查找")
+    t.geometry("260x60+200+250")
+    t.transient(top)
+    Label(t, text="查找：").grid(row=0, column=0, sticky="e")
+    v = StringVar()
+    e = Entry(t, width=20, textvariable=v)
+    e.grid(row=0, column=1, padx=2, pady=2, sticky="we")
+    e.focus_set()
+    c = IntVar()
+    Checkbutton(t, text="不区分大小写", variable=c).grid(row=1, column=1, sticky='e')
+    Button(t, text="查找所有", command=lambda: search(v.get(), c.get(),
+                                                  textPad, t, e)).grid(row=0, column=2, sticky="e" + "w", padx=2,
+                                                                       pady=2)
+ 
+    def close_search():
+        textPad.tag_remove("match", "1.0", END)
+        t.destroy()
+ 
+    t.protocol("WM_DELETE_WINDOW", close_search)
+ 
+ 
+def mypopup(event):
+    global editmenu
+    editmenu.tk_popup(event.x_root, event.y_root)
+ 
+ 
+def search(needle, cssnstv, textPad, t, e):
+    textPad.tag_remove("match", "1.0", END)
+    count = 0
+    if needle:
+        pos = "1.0"
+        while True:
+            pos = textPad.search(needle, pos, nocase=cssnstv, stopindex=END)
+            if not pos:
+                break
+            lastpos = pos + str(len(needle))
+            textPad.tag_add("match", pos, lastpos)
+            count += 1
+            pos = lastpos
+        textPad.tag_config('match', fg='yellow', bg="green")
+        e.focus_set()
+        t.title(str(count) + "个被匹配")
+ 
+ 
 def vi():
-   if easygui.ccbox("Run notebook?","Notebook",["[Y]","[N]"]):
-	   return vi_start()
+    top = Tk()
+    top.title("记事本")
+    top.geometry("600x400+100+50")
+ 
+    menubar = Menu(top)
+ 
+    # 文件功能
+    filemenu = Menu(top)
+    filemenu.add_command(label="新建", accelerator="Ctrl+N", command=mynew)
+    filemenu.add_command(label="打开", accelerator="Ctrl+O", command=myopen)
+    filemenu.add_command(label="保存", accelerator="Ctrl+S", command=mysave)
+    filemenu.add_command(label="另存为", accelerator="Ctrl+Shift+S", command=mysaveas)
+    menubar.add_cascade(label="文件", menu=filemenu)
+ 
+    # 编辑功能
+    editmenu = Menu(top)
+    editmenu.add_command(label="撤销", accelerator="Ctrl+Z", command=undo)
+    editmenu.add_command(label="重做", accelerator="Ctrl+Y", command=redo)
+    editmenu.add_separator()
+    editmenu.add_command(label="剪切", accelerator="Ctrl+X", command=cut)
+    editmenu.add_command(label="复制", accelerator="Ctrl+C", command=copy)
+    editmenu.add_command(label="粘贴", accelerator="Ctrl+V", command=paste)
+    editmenu.add_separator()
+    editmenu.add_command(label="查找", accelerator="Ctrl+F", command=find)
+    editmenu.add_command(label="全选", accelerator="Ctrl+A", command=select_all)
+    menubar.add_cascade(label="编辑", menu=editmenu)
+ 
+    # 关于 功能
+    aboutmenu = Menu(top)
+    aboutmenu.add_command(label="作者", command=author)
+    aboutmenu.add_command(label="版权", command=power)
+    menubar.add_cascade(label="关于", menu=aboutmenu)
+ 
+    top['menu'] = menubar
+ 
+
+    textPad = Text(top, undo=True)
+    textPad.pack(expand=YES, fill=BOTH)
+    scroll = Scrollbar(textPad)
+    textPad.config(yscrollcommand=scroll.set)
+    scroll.config(command=textPad.yview)
+    scroll.pack(side=RIGHT, fill=Y)
+ 
+    # 热键绑定
+    textPad.bind("<Control-N>", mynew)
+    textPad.bind("<Control-n>", mynew)
+    textPad.bind("<Control-O>", myopen)
+    textPad.bind("<Control-o>", myopen)
+    textPad.bind("<Control-S>", mysave)
+    textPad.bind("<Control-s>", mysave)
+    textPad.bind("<Control-A>", select_all)
+    textPad.bind("<Control-a>", select_all)
+    textPad.bind("<Control-F>", find)
+    textPad.bind("<Control-f>", find)
+ 
+    textPad.bind("<Control-3>", mypopup)
+    top.mainloop()

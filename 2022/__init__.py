@@ -130,7 +130,7 @@ def start():
 			else:
 				continue
 		else:
-			shutdown
+			shutdown()
 
 
 if __name__ == "__main__":
