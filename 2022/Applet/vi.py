@@ -110,11 +110,6 @@ def find():
     t.protocol("WM_DELETE_WINDOW", close_search)
  
  
-def mypopup(event):
-    global editmenu
-    editmenu.tk_popup(event.x_root, event.y_root)
- 
- 
 def search(needle, cssnstv, textPad, t, e):
     textPad.tag_remove("match", "1.0", END)
     count = 0
@@ -188,6 +183,4 @@ def vi():
     textPad.bind("<Control-a>", select_all)
     textPad.bind("<Control-F>", find)
     textPad.bind("<Control-f>", find)
- 
-    textPad.bind("<Control-3>", mypopup)
     top.mainloop()
