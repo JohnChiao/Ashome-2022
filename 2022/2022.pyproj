@@ -2109,7 +2109,6 @@
     <Content Include="env\Scripts\pip3.exe" />
     <Content Include="env\Scripts\python.exe" />
     <Content Include="env\Scripts\pythonw.exe" />
-    <Content Include="Pack\devfly\output\CC" />
     <Content Include="requirements.txt" />
     <Content Include="Resources\fileicon\folder.png" />
     <Content Include="Resources\fileicon\img.png" />
