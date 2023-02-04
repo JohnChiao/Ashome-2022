@@ -45,6 +45,8 @@ from vi import *
 USERID = 0
 USERS = []
 _PASSWD = {}
+userfile = open("profile.ini","a+")
+userfiler = open("profile.ini","r")
 
 
 class User:
@@ -58,6 +60,8 @@ class User:
 			USERS.append(self.name)
 			self.history = ""
 			_PASSWD[name] = passwd
+			userfile.write(self.name+"\n"+passwd+"\n")
+			userfile.flush()
 		elif passwd == _PASSWD[name]:
 			self.name = name
 			self.id = USERS.index(self.name)
@@ -74,5 +78,6 @@ def envvar():
 	return print(locals())
 
 
-print("Initializing user...")
-SYSTEM = User("SYSTEM", "rootsystem")
+print("Initializing users...")
+USERS = userfiler.readlines()[0::2]
+_PASSWD = dict(zip(USERS, userfiler.readlines()[1::2]))

@@ -51,7 +51,7 @@ def main():
 
 		elif "-i" in code:
 			if easygui.ccbox("Install "+code[3:]+"?", "Package Manager"):
-				exec("import "+code[3:])
+				exec("from "+code[3:]+" import *")
 
 		elif code == "-l":
 			break
