@@ -2,10 +2,6 @@ from Applet import *
 print("Booting programs...")
 import platform
 import os
-import sys
-import re
-import setup
-import getpass
 import easygui
 print("Initializing shell...")
 # Global Define Start
@@ -13,8 +9,6 @@ VERSION = "2022.11.8"
 code = ""
 _prompt = {"nt" : " > ", "posix" : " $ "}
 cter = False
-username = getpass.getuser()
-user = User(username, "root")
 print("Python V"+platform.python_version())
 # Global Define End
 # Login
@@ -54,7 +48,7 @@ def main():
 				exec("from "+code[3:]+" import *")
 
 		elif code == "-l":
-			break
+			return start()
 
 		else:
 			try:
@@ -100,8 +94,6 @@ def main():
 
 def shutdown():
 	if easygui.boolbox("Do you want to exit?","Exit"):
-		print("Logouting user",User.activaty.name,"...")
-		User.activaty.logout()
 		print("Quiting terminal...")
 		quit()
 	else:
@@ -109,28 +101,16 @@ def shutdown():
 
 
 def start():
-	while True:
-		if easygui.ccbox("Welcome!","Start",["[L]ogin or Sign up","[Q]uit"]):
-			ulogin = easygui.choicebox("Login","Login",USERS+["Sign Up..."])
-			if ulogin == "Sign Up...":
-				t = easygui.multpasswordbox("Sign up:", "Sign Up", [
-											"Username", "Password"])
-				if not easygui.ynbox("Sign up "+t[0]+"?", "Sign Up"):
-					t = None
-				if t[0]:
-					User(*t)
-					main()
-			elif ulogin:
-				try:
-					passwd = easygui.passwordbox("Input password:", "Login")
-					User(name=ulogin, passwd=passwd)
-					main()
-				except ConnectionError as err:
-					easygui.msgbox(err, "Error", "Cencel")
-			else:
-				continue
-		else:
-			shutdown()
+	choice = easygui.buttonbox("Hello", "Login", ("Login","Sign Up","Quit"))
+	if choice == "Login":
+		login()
+		main()
+	elif choice == "Sign Up":
+		signup()
+		main()
+	else:
+		shutdown()
+		main()
 
 
 if __name__ == "__main__":
