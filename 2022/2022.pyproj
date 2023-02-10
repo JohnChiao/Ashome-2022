@@ -899,7 +899,12 @@
     <Compile Include="Pack\devfly\jv.py" />
     <Compile Include="Pack\devfly\py.py" />
     <Compile Include="Pack\devfly\__init__.py" />
+<<<<<<< Updated upstream
     <Compile Include="Pack\__init__.py" />
+=======
+    <Compile Include="Pack\notepad.py" />
+    <Compile Include="setup.py" />
+>>>>>>> Stashed changes
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
@@ -2109,6 +2114,7 @@
     <Content Include="env\Scripts\pip3.exe" />
     <Content Include="env\Scripts\python.exe" />
     <Content Include="env\Scripts\pythonw.exe" />
+    <Content Include="Pack\devfly\output\CC" />
     <Content Include="requirements.txt" />
     <Content Include="Resources\fileicon\folder.png" />
     <Content Include="Resources\fileicon\img.png" />
