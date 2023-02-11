@@ -900,7 +900,10 @@
     <Compile Include="Pack\devfly\py.py" />
     <Compile Include="Pack\devfly\__init__.py" />
     <Compile Include="Pack\__init__.py" />
+<<<<<<< HEAD
     <Compile Include="__init__.py" />
+=======
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Applet\" />
