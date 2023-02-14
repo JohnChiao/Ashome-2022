@@ -43,9 +43,8 @@ def main():
 		elif code == "~":
 			cd(os.path.expanduser('~'))
 
-		elif "-i" in code:
-			if easygui.ccbox("Install "+code[3:]+"?", "Package Manager"):
-				exec("from "+code[3:]+" import *")
+		elif code == "-p":
+			exec("from Pack import *")
 
 		elif code == "-l":
 			return start()
