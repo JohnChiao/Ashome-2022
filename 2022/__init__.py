@@ -40,9 +40,6 @@ def main():
 		elif code[:3] == "cd " and len(code) > 3:
 			cd(code[3:])
 
-		elif code == "~":
-			cd(os.path.expanduser('~'))
-
 		elif code == "-p":
 			exec("from Pack import *")
 
