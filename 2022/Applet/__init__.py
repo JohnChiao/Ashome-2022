@@ -93,8 +93,10 @@ def login():
 			user = User(name)
 		else:
 			print("Password is wrong!")
+			quit()
 	else:
 		print("Username not found")
+		quit()
 
 
 def signup():
