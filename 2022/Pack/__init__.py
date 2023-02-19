@@ -10,3 +10,5 @@ for i in path_list:
 name = input("Please enter the package name to import:")
 if name in path_list:
     exec("from "+name+" import *")
+else:
+    print("Package not found!")
