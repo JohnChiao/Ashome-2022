@@ -8,7 +8,7 @@ import tkinter.messagebox
 root = tkinter.Tk()
 root.minsize(700, 500)
 root.title('压缩软件')
-root['bg'] = '#303030'
+root['bg'] = '#f2f2f2'
 
 
 #声明一个全局变量files
@@ -22,7 +22,7 @@ def selecfiles():
     #声明全局变量
     global files
     #使用文件对话框选择文件
-    files = tkinter.filedialog.askopenfilenames(title='选择你要要做的软件bitch')
+    files = tkinter.filedialog.askopenfilenames(title='选择文件')
     #显示选中文件的信息
     #临时的路径容器
     tmpfiles = []
@@ -56,7 +56,7 @@ def uncompress():
     global files
 
     # 使用文件对话框选择文件
-    files = tkinter.filedialog.askopenfilenames(title='选择你要要做的软件bitch')
+    files = tkinter.filedialog.askopenfilenames(title='选择文件：')
     # 显示选中文件的信息
     # 临时的路径容器
     tmpfiles = []
@@ -81,7 +81,7 @@ def uncompress():
 def zipm():
 	#界面布局
 	#菜单栏
-	allmenu = tkinter.Menu(root, bg='black')
+	allmenu = tkinter.Menu(root, bg='#f2f2f2')
 
 	filmenu = tkinter.Menu(allmenu, tearoff=0)
 	filmenu.add_command(label='打开')
@@ -102,40 +102,37 @@ def zipm():
 	allmenu.add_cascade(label='编辑', menu=filmenu1)
 	allmenu.add_cascade(label='工具')
 
-	root.config(menu=allmenu, bg='black')
+	root.config(menu=allmenu, bg='#f2f2f2')
 
 
 	#添加按钮界面
-	label = tkinter.Label(root, bg='#242424')
+	label = tkinter.Label(root, bg='#f2f2f2')
 	label.place(width=700, height=115)
 	#1.添加文件按钮
-	btnadd = tkinter.Button(root, text='选择文件', bg='#242424',
-							bd=0.5, fg='grey', command=selecfiles)
+	btnadd = tkinter.Button(root, text='选择文件', bg='#f2f2f2',
+							bd=0.5, fg='black', command=selecfiles)
 	btnadd.place(x=100, y=70, width='80', height=30)
 	#2.压缩操作按钮
-	btnadd = tkinter.Button(root, text='压缩文件', bg='#242424',
-							bd=0.5, fg='grey', command=zipfiles)
+	btnadd = tkinter.Button(root, text='压缩文件', bg='#f2f2f2',
+							bd=0.5, fg='black', command=zipfiles)
 	btnadd.place(x=300, y=70, width='80', height=30)
 	#3.解压操作按钮
-	btnadd = tkinter.Button(root, text='解压文件', bg='#242424',
-							bd=0.5, fg='grey', command=uncompress)
+	btnadd = tkinter.Button(root, text='解压文件', bg='#f2f2f2',
+							bd=0.5, fg='black', command=uncompress)
 	btnadd.place(x=500, y=70, width='80', height=30)
 
-	img1 = tkinter.PhotoImage(file='1.gif')
-	labelg1 = tkinter.Label(root, image=img1)
+	labelg1 = tkinter.Label(root)
 	labelg1.place(x=115, y=15, width=50, height=50)
 
-	img2 = tkinter.PhotoImage(file='2.gif')
-	labelg2 = tkinter.Label(root, image=img2)
+	labelg2 = tkinter.Label(root)
 	labelg2.place(x=317, y=15, width=50, height=50)
 
-	img3 = tkinter.PhotoImage(file='1.gif')
-	labelg3 = tkinter.Label(root, image=img1)
+	labelg3 = tkinter.Label(root)
 	labelg3.place(x=515, y=15, width=50, height=50)
 
 
 	#4显示信息的组件
-	label = tkinter.Label(root, bg='#F2F2F2',
+	label = tkinter.Label(root, bg='#f0f0f0',
 						textvariable=filenames, anchor='nw', justify='left')
 	label.place(x=5, y=115, width='690', height='370')
 

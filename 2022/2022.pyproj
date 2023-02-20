@@ -899,6 +899,7 @@
     <Compile Include="Pack\devfly\jv.py" />
     <Compile Include="Pack\devfly\py.py" />
     <Compile Include="Pack\devfly\__init__.py" />
+    <Compile Include="Pack\zip\__init__.py" />
     <Compile Include="Pack\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
@@ -1126,6 +1127,7 @@
     <Folder Include="Pack\cvpaint\" />
     <Folder Include="Pack\devfly\" />
     <Folder Include="Pack\devfly\output\" />
+    <Folder Include="Pack\zip\" />
     <Folder Include="Resources\" />
     <Folder Include="Pack\" />
     <Folder Include="Resources\fileicon\" />

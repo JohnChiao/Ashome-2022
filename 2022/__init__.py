@@ -81,8 +81,9 @@ def main():
 				print("\n\r", "IndexError:\n\tCode:\n\t\t",
 									code, "\n\tDatail:\n\t\t", err, "\n")
 			
-			except:
-				print("\n\r", "Error:\n\tCode:\n\t\t", code)
+			except Exception as err:
+				print("\n\r", "Error:\n\tCode:\n\t\t", 
+									code, "\n\tDatail:\n\t\t", err, "\n")
 
 			else:
 				print("\n\r")
